@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="雙福基金會 倡導關懷志工培訓講義：與失智者的溝通及實務演練、失能長輩的照顧與陪伴">
+<title>倡導關懷志工講義</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 純白底、深藍主色的單欄講義；頁首為深藍色塊，上午藍、下午橘兩段，字級放大方便中高齡志工閱讀 */
+:root{
+  --bg:#ffffff;
+  --paper:#f4f7fc;
+  --ink:#152039;
+  --muted:#56617a;
+  --line:#d8e0ee;
+  --teal:#1f56b0;
+  --teal-soft:#e5eefc;
+  --marigold:#c4501c;
+  --marigold-soft:#fdece3;
+  --rose:#b3261e;
+  --rose-soft:#fbe7e5;
+  --hero:#16326b;
+  --hero-ink:#ffffff;
+  --hero-sub:#c4d4f2;
+  --band-am:#1f56b0;
+  --band-pm:#c4501c;
+  --f-display:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1524;--paper:#18213a;--ink:#e7ecf6;--muted:#a3aec6;--line:#2c3854;
+    --teal:#82aaf5;--teal-soft:#1c2c50;--marigold:#f59a6b;--marigold-soft:#3a2219;
+    --rose:#f2948b;--rose-soft:#3d1f1d;--hero:#1b2f5e;--hero-ink:#ffffff;--hero-sub:#b3c4e8;--band-am:#2a4f96;--band-pm:#9a4320;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1524;--paper:#18213a;--ink:#e7ecf6;--muted:#a3aec6;--line:#2c3854;
+  --teal:#82aaf5;--teal-soft:#1c2c50;--marigold:#f59a6b;--marigold-soft:#3a2219;
+  --rose:#f2948b;--rose-soft:#3d1f1d;--hero:#1b2f5e;--hero-ink:#ffffff;--hero-sub:#b3c4e8;--band-am:#2a4f96;--band-pm:#9a4320;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.8;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto;padding-block:40px 80px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(28px,5.2vw,42px);font-weight:900}
+h2{font-size:clamp(23px,3.6vw,30px);font-weight:900}
+h3{font-size:20px;font-weight:600;color:var(--teal)}
+p{margin:0}
+a{color:var(--teal)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:4px}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--teal);font-weight:700}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack-lg{display:flex;flex-direction:column;gap:32px}
+
+/* Header */
+header.top{display:flex;flex-direction:column;gap:20px;padding:32px 28px;border-radius:16px;background:var(--hero);color:var(--hero-ink)}
+header.top .eyebrow{color:var(--hero-sub)}
+.sub{font-family:var(--f-display);font-size:clamp(18px,2.8vw,22px);font-weight:500;color:var(--hero-sub)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px 24px;margin:0;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--hero-ink) 25%,transparent)}
+.meta div{min-width:0}
+.meta dt{font-size:13px;letter-spacing:.1em;color:var(--hero-sub)}
+.meta dd{margin:0;font-weight:500}
+@media (max-width:520px){header.top{padding:24px 18px}}
+
+nav.toc{display:flex;flex-wrap:wrap;gap:8px}
+nav.toc a{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);
+  text-decoration:none;color:var(--ink);font-size:15px}
+nav.toc a:hover{border-color:var(--teal);color:var(--teal)}
+header.top nav.toc a{background:transparent;color:var(--hero-ink);border-color:color-mix(in srgb,var(--hero-ink) 35%,transparent)}
+header.top nav.toc a:hover{background:var(--hero-ink);color:var(--hero)}
+
+/* Service model */
+.model{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--paper);border-radius:10px;overflow:hidden}
+.model div{padding:18px 16px;border-right:1px solid var(--line);min-width:0}
+.model div:last-child{border-right:0}
+.model b{display:block;font-family:var(--f-display);font-size:30px;color:var(--teal);line-height:1.2}
+.model span{font-size:15px;color:var(--muted)}
+@media (max-width:520px){.model{grid-template-columns:1fr}.model div{border-right:0;border-bottom:1px solid var(--line)}.model div:last-child{border-bottom:0}}
+
+/* Part banner */
+.part{display:flex;flex-direction:column;gap:6px;padding:22px 24px;border-radius:14px;background:var(--band-am);color:var(--hero-ink)}
+.part .eyebrow{color:var(--hero-ink);opacity:.85}
+.part h2{color:var(--hero-ink)}
+.part p{opacity:.9}
+.part.pm{background:var(--band-pm)}
+
+section.sec{display:flex;flex-direction:column;gap:16px}
+.secno{font-variant-numeric:tabular-nums;color:var(--muted);font-family:var(--f-body);font-size:15px;font-weight:500;margin-right:8px}
+
+/* Tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+table{width:100%;border-collapse:collapse;font-size:16px;min-width:560px}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{font-size:14px;letter-spacing:.06em;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* Lists */
+ul.clean,ol.clean{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.box h4{margin:0;font-size:17px}
+.box.do h4{color:var(--teal)}
+.box.dont h4{color:var(--rose)}
+
+.quote{font-family:var(--f-display);font-size:clamp(20px,3vw,25px);font-weight:600;line-height:1.6;padding:8px 0 8px 20px;border-left:4px solid var(--marigold)}
+
+/* Principles */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;counter-reset:p;margin:0;padding:0;list-style:none}
+.principles li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.principles b{display:block;font-size:17px}
+.principles span{font-size:15px;color:var(--muted)}
+
+/* Say / don't say */
+.say td:first-child{color:var(--rose)}
+.say td:last-child{color:var(--teal);font-weight:500}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.steps .k{font-family:var(--f-display);font-size:28px;font-weight:900;color:var(--teal);line-height:1.1}
+.steps .k small{font-family:var(--f-body);font-size:13px;color:var(--muted);font-weight:500;margin-left:6px;letter-spacing:.06em}
+@media (max-width:620px){.steps{grid-template-columns:1fr}}
+
+.alert{background:var(--rose-soft);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.alert h4{margin:0;color:var(--rose);font-size:17px}
+.note{background:var(--marigold-soft);border-radius:10px;padding:16px 20px}
+.tip{background:var(--teal-soft);border-radius:10px;padding:16px 20px}
+
+/* Scenario cards */
+.drill{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card .tag{font-size:13px;letter-spacing:.08em;color:var(--marigold);font-weight:700}
+.card h4{margin:0;font-family:var(--f-display);font-size:19px}
+.card .who{font-size:15px;color:var(--muted)}
+details{border-top:1px dashed var(--line);padding-top:10px}
+summary{cursor:pointer;color:var(--teal);font-weight:700;font-size:15px}
+details[open] summary{margin-bottom:8px}
+details ul{font-size:16px}
+
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.roles div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:15px}
+.roles b{display:block;font-size:16px}
+
+/* Timeline */
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.timeline li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.timeline li:last-child{border-bottom:0}
+.timeline .t{font-weight:700;color:var(--teal)}
+@media (max-width:520px){.timeline li{grid-template-columns:1fr;gap:2px}}
+
+.schedule td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:700}
+
+/* Pocket card */
+.pocket{border:2px dashed var(--teal);border-radius:14px;padding:24px;background:var(--paper);display:flex;flex-direction:column;gap:14px}
+.pocket .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.contact .box p{font-variant-numeric:tabular-nums}
+.phone{font-size:20px;font-weight:700;user-select:all}
+
+footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+
+/* Dialogue player */
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.dlg-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.dlg-tabs button,.btn{font:inherit;font-size:15px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.dlg-tabs button[aria-pressed="true"]{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+.btn.primary{background:var(--teal);color:var(--bg);border-color:var(--teal);font-weight:700;padding:8px 20px}
+.btn:disabled{opacity:.45;cursor:default}
+button:focus-visible{outline:3px solid var(--marigold);outline-offset:2px}
+.dlg-scene{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:10px 14px}
+.dlg-tech{font-size:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dlg-tech span{padding:2px 10px;border-radius:999px;background:var(--teal-soft);color:var(--teal);font-weight:700}
+.btn.mini{font-size:14px;padding:4px 12px;white-space:nowrap;color:var(--teal);border-color:var(--teal);background:transparent}
+.btn.mini:hover{background:var(--teal-soft)}
+.card .btn.mini{align-self:flex-start}
+.lines{display:flex;flex-direction:column;gap:10px}
+.line{display:flex;flex-direction:column;gap:4px;max-width:88%;animation:rise .25s ease-out}
+.line .who{font-size:13px;color:var(--muted);letter-spacing:.06em}
+.line .say{padding:10px 14px;border-radius:12px;line-height:1.7}
+.line.elder{align-self:flex-start}
+.line.elder .say{background:var(--marigold-soft)}
+.line.vol{align-self:flex-end;align-items:flex-end}
+.line.vol .say{background:var(--teal-soft)}
+.line.avoid .say{background:var(--rose-soft);text-decoration:line-through;text-decoration-color:var(--rose)}
+.line .why{font-size:14px;color:var(--teal);font-weight:500}
+.line.avoid .why{color:var(--rose)}
+.dlg-ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.dlg-ctrl .count{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;margin-left:auto}
+@keyframes rise{from{opacity:.3;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Quiz */
+.quiz{display:flex;flex-direction:column;gap:16px}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.q .prompt{font-family:var(--f-display);font-size:18px;font-weight:600}
+.q .opts{display:flex;flex-direction:column;gap:8px}
+.q .opts button{font:inherit;text-align:left;padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;line-height:1.6}
+.q .opts button:hover{border-color:var(--teal)}
+.q .opts button.right{background:var(--teal-soft);border-color:var(--teal)}
+.q .opts button.wrong{background:var(--rose-soft);border-color:var(--rose)}
+.q .fb{font-size:15px;padding:10px 14px;border-radius:8px;background:var(--bg)}
+.score{font-weight:700;color:var(--teal);font-variant-numeric:tabular-nums}
+
+/* Activity cards */
+.acts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+a.act{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ink);min-width:0;transition:border-color .15s,transform .15s}
+a.act:hover{border-color:var(--teal);transform:translateY(-2px)}
+a.act:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+a.act img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line);background:var(--bg)}
+a.act .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+a.act b{font-size:17px}
+a.act p{font-size:15px;color:var(--muted);line-height:1.65}
+a.act .fit{font-size:13px;color:var(--marigold);font-weight:700}
+a.act .go{margin-top:auto;font-size:14px;color:var(--teal);font-weight:700}
+.act-group{display:flex;flex-direction:column;gap:12px}
+.act-group h4{margin:0;font-size:18px;font-family:var(--f-display)}
+
+/* Cover QR */
+.cover-row{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.cover-row .meta{flex:1 1 320px;border-top:0;padding-top:0}
+.qrbox{display:flex;gap:14px;align-items:center;background:var(--hero-ink);color:var(--hero);border-radius:12px;padding:12px 16px 12px 12px}
+.qrbox svg.qr{width:120px;height:120px;display:block;flex:none}
+.qrbox b{display:block;font-size:16px}
+.qrbox span{font-size:13px;word-break:break-all;color:var(--hero)}
+@media (max-width:520px){.qrbox{width:100%}}
+
+/* Warm-up two-choice */
+.warm{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.wq{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.wq .n{font-size:13px;color:var(--teal);font-weight:700;letter-spacing:.06em}
+.wq .prompt{font-size:18px;font-weight:700;line-height:1.5}
+.wq .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wq .two button{font:inherit;font-size:16px;font-weight:500;padding:12px 10px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;line-height:1.45}
+.wq .two button:hover{border-color:var(--teal)}
+.wq .two button.right{background:var(--teal-soft);border-color:var(--teal);color:var(--teal)}
+.wq .two button.wrong{background:var(--rose-soft);border-color:var(--rose);color:var(--rose)}
+.wq .fb{font-size:15px;line-height:1.65;color:var(--muted)}
+.warm-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+/* You-Me-Him */
+.ymh{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ymh div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.ymh .big{font-size:34px;font-weight:900;color:var(--teal);line-height:1.1}
+.ymh .big small{font-size:14px;color:var(--muted);font-weight:500;margin-left:6px}
+.ymh q{font-weight:700;quotes:"「" "」"}
+@media (max-width:620px){.ymh{grid-template-columns:1fr}}
+
+/* Orientation */
+.orient{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.orient div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.orient .k{font-size:26px;font-weight:900;color:var(--marigold)}
+.orient p{font-size:15px}
+@media (max-width:760px){.orient{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.orient{grid-template-columns:1fr}}
+.script{background:var(--teal-soft);border-radius:12px;padding:16px 20px;font-size:18px;line-height:1.9}
+.script mark{background:none;color:var(--teal);font-weight:700}
+
+/* Song feature */
+.song{border:2px solid var(--marigold);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;background:var(--paper)}
+.song .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.song figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.song figure img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+.song figcaption{font-size:15px}
+.song figcaption b{color:var(--marigold)}
+@media (max-width:620px){.song .shots{grid-template-columns:1fr}}
+
+.steps.steps4{grid-template-columns:repeat(4,1fr)}
+.steps .k{word-break:break-word}
+@media (max-width:860px){.steps.steps4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.steps.steps4{grid-template-columns:1fr}}
+
+@media print{
+  nav.toc{display:none}
+  body{font-size:13pt}
+  details{border:0}
+  details>*:not(summary){display:block}
+  .card,.box,.tbl,.steps li{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">雙福社會福利慈善事業基金會・新北服務中心｜倡導關懷志工培訓</div>
+  <h1>與失智者的溝通及實務演練</h1>
+  <div class="sub">上午｜與失智患者的溝通及實務演練　下午｜失能長輩的照顧與陪伴</div>
+  <div class="cover-row">
+  <dl class="meta">
+    <div><dt>日期</dt><dd>10 月 31 日（六）10:10–16:10</dd></div>
+    <div><dt>地點</dt><dd>新莊裕民行政大樓 6 樓禮堂</dd></div>
+    <div><dt>對象</dt><dd>倡導關懷志工，約 80 位</dd></div>
+    <div><dt>聯絡人</dt><dd>社工 蔡辰羿</dd></div>
+  </dl>
+  <div class="qrbox"><svg class="qr" viewBox="0 0 37 37" role="img" aria-label="講義網址 QR Code" shape-rendering="crispEdges"><rect width="37" height="37" fill="#ffffff"/><path d="M2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM15 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM21 2h1v1h-1zM22 2h1v1h-1zM23 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM28 2h1v1h-1zM29 2h1v1h-1zM30 2h1v1h-1zM31 2h1v1h-1zM32 2h1v1h-1zM33 2h1v1h-1zM34 2h1v1h-1zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM14 3h1v1h-1zM15 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM11 4h1v1h-1zM12 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM28 4h1v1h-1zM30 4h1v1h-1zM31 4h1v1h-1zM32 4h1v1h-1zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM24 5h1v1h-1zM28 5h1v1h-1zM30 5h1v1h-1zM31 5h1v1h-1zM32 5h1v1h-1zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM13 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM26 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM31 6h1v1h-1zM32 6h1v1h-1zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM16 7h1v1h-1zM21 7h1v1h-1zM22 7h1v1h-1zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM30 8h1v1h-1zM31 8h1v1h-1zM32 8h1v1h-1zM33 8h1v1h-1zM34 8h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM24 9h1v1h-1zM26 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM19 10h1v1h-1zM20 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM25 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM31 10h1v1h-1zM33 10h1v1h-1zM34 10h1v1h-1zM4 11h1v1h-1zM6 11h1v1h-1zM9 11h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM14 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM21 11h1v1h-1zM22 11h1v1h-1zM25 11h1v1h-1zM28 11h1v1h-1zM29 11h1v1h-1zM31 11h1v1h-1zM32 11h1v1h-1zM34 11h1v1h-1zM2 12h1v1h-1zM3 12h1v1h-1zM4 12h1v1h-1zM5 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM20 12h1v1h-1zM22 12h1v1h-1zM25 12h1v1h-1zM27 12h1v1h-1zM29 12h1v1h-1zM30 12h1v1h-1zM31 12h1v1h-1zM33 12h1v1h-1zM34 12h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM18 13h1v1h-1zM22 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM31 13h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM19 14h1v1h-1zM21 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM26 14h1v1h-1zM27 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM31 14h1v1h-1zM33 14h1v1h-1zM2 15h1v1h-1zM3 15h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM12 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM21 15h1v1h-1zM26 15h1v1h-1zM31 15h1v1h-1zM33 15h1v1h-1zM2 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM14 16h1v1h-1zM15 16h1v1h-1zM16 16h1v1h-1zM17 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM26 16h1v1h-1zM28 16h1v1h-1zM29 16h1v1h-1zM30 16h1v1h-1zM31 16h1v1h-1zM2 17h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM20 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM24 17h1v1h-1zM27 17h1v1h-1zM28 17h1v1h-1zM31 17h1v1h-1zM32 17h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM17 18h1v1h-1zM20 18h1v1h-1zM21 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM26 18h1v1h-1zM27 18h1v1h-1zM28 18h1v1h-1zM30 18h1v1h-1zM31 18h1v1h-1zM32 18h1v1h-1zM5 19h1v1h-1zM9 19h1v1h-1zM12 19h1v1h-1zM14 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM17 19h1v1h-1zM25 19h1v1h-1zM26 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM30 19h1v1h-1zM31 19h1v1h-1zM34 19h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM12 20h1v1h-1zM13 20h1v1h-1zM14 20h1v1h-1zM15 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM26 20h1v1h-1zM27 20h1v1h-1zM29 20h1v1h-1zM30 20h1v1h-1zM32 20h1v1h-1zM33 20h1v1h-1zM2 21h1v1h-1zM6 21h1v1h-1zM10 21h1v1h-1zM12 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM19 21h1v1h-1zM20 21h1v1h-1zM21 21h1v1h-1zM22 21h1v1h-1zM24 21h1v1h-1zM25 21h1v1h-1zM26 21h1v1h-1zM28 21h1v1h-1zM30 21h1v1h-1zM34 21h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM7 22h1v1h-1zM8 22h1v1h-1zM9 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM15 22h1v1h-1zM17 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM21 22h1v1h-1zM23 22h1v1h-1zM24 22h1v1h-1zM29 22h1v1h-1zM31 22h1v1h-1zM32 22h1v1h-1zM33 22h1v1h-1zM34 22h1v1h-1zM2 23h1v1h-1zM3 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM15 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM23 23h1v1h-1zM25 23h1v1h-1zM28 23h1v1h-1zM31 23h1v1h-1zM34 23h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM14 24h1v1h-1zM15 24h1v1h-1zM18 24h1v1h-1zM19 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM30 24h1v1h-1zM31 24h1v1h-1zM32 24h1v1h-1zM33 24h1v1h-1zM34 24h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM5 25h1v1h-1zM7 25h1v1h-1zM10 25h1v1h-1zM11 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM17 25h1v1h-1zM22 25h1v1h-1zM26 25h1v1h-1zM29 25h1v1h-1zM30 25h1v1h-1zM31 25h1v1h-1zM33 25h1v1h-1zM34 25h1v1h-1zM2 26h1v1h-1zM4 26h1v1h-1zM8 26h1v1h-1zM12 26h1v1h-1zM19 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM28 26h1v1h-1zM29 26h1v1h-1zM30 26h1v1h-1zM34 26h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM13 27h1v1h-1zM14 27h1v1h-1zM17 27h1v1h-1zM19 27h1v1h-1zM20 27h1v1h-1zM21 27h1v1h-1zM22 27h1v1h-1zM23 27h1v1h-1zM24 27h1v1h-1zM26 27h1v1h-1zM30 27h1v1h-1zM31 27h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM7 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM20 28h1v1h-1zM21 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1zM28 28h1v1h-1zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM10 29h1v1h-1zM12 29h1v1h-1zM13 29h1v1h-1zM15 29h1v1h-1zM16 29h1v1h-1zM23 29h1v1h-1zM24 29h1v1h-1zM25 29h1v1h-1zM26 29h1v1h-1zM30 29h1v1h-1zM31 29h1v1h-1zM32 29h1v1h-1zM33 29h1v1h-1zM34 29h1v1h-1zM2 30h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM8 30h1v1h-1zM11 30h1v1h-1zM12 30h1v1h-1zM13 30h1v1h-1zM14 30h1v1h-1zM16 30h1v1h-1zM20 30h1v1h-1zM22 30h1v1h-1zM23 30h1v1h-1zM24 30h1v1h-1zM25 30h1v1h-1zM26 30h1v1h-1zM27 30h1v1h-1zM28 30h1v1h-1zM29 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM34 30h1v1h-1zM2 31h1v1h-1zM4 31h1v1h-1zM5 31h1v1h-1zM6 31h1v1h-1zM8 31h1v1h-1zM10 31h1v1h-1zM11 31h1v1h-1zM14 31h1v1h-1zM15 31h1v1h-1zM16 31h1v1h-1zM17 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM22 31h1v1h-1zM25 31h1v1h-1zM29 31h1v1h-1zM31 31h1v1h-1zM34 31h1v1h-1zM2 32h1v1h-1zM4 32h1v1h-1zM5 32h1v1h-1zM6 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM12 32h1v1h-1zM17 32h1v1h-1zM23 32h1v1h-1zM26 32h1v1h-1zM28 32h1v1h-1zM29 32h1v1h-1zM31 32h1v1h-1zM2 33h1v1h-1zM8 33h1v1h-1zM12 33h1v1h-1zM14 33h1v1h-1zM16 33h1v1h-1zM17 33h1v1h-1zM19 33h1v1h-1zM20 33h1v1h-1zM21 33h1v1h-1zM25 33h1v1h-1zM26 33h1v1h-1zM27 33h1v1h-1zM28 33h1v1h-1zM29 33h1v1h-1zM30 33h1v1h-1zM34 33h1v1h-1zM2 34h1v1h-1zM3 34h1v1h-1zM4 34h1v1h-1zM5 34h1v1h-1zM6 34h1v1h-1zM7 34h1v1h-1zM8 34h1v1h-1zM10 34h1v1h-1zM11 34h1v1h-1zM16 34h1v1h-1zM18 34h1v1h-1zM19 34h1v1h-1zM20 34h1v1h-1zM21 34h1v1h-1zM22 34h1v1h-1zM23 34h1v1h-1zM24 34h1v1h-1zM25 34h1v1h-1zM30 34h1v1h-1zM32 34h1v1h-1z" fill="#152039"/></svg><div><b>手機掃描開啟講義</b><span>https://mattsue1003.github.io/shuangfu-dementia-volunteer/</span></div></div>
+  </div>
+  <nav class="toc" aria-label="講義目錄">
+    <a href="#warmup">暖身問答</a>
+    <a href="#role">我們的角色</a>
+    <a href="#schedule">課程時程</a>
+    <a href="#am">上午・失智溝通</a>
+    <a href="#orient">定向感問候</a>
+    <a href="#ymh">你・我・他</a>
+    <a href="#dialogue">示範對話</a>
+    <a href="#quiz">快問快答</a>
+    <a href="#am-drill">上午演練</a>
+    <a href="#pm">下午・失能陪伴</a>
+    <a href="#activities">活動教案庫</a>
+    <a href="#pm-drill">下午演練</a>
+    <a href="#leave">離開 4F</a>
+    <a href="#pocket">訪視口袋卡</a>
+    <a href="#info">交通與聯絡</a>
+  </nav>
+</header>
+
+<!-- 暖身 -->
+<section class="sec" id="warmup">
+  <div class="eyebrow">課前暖身</div>
+  <h2>十題二選一</h2>
+  <p>先猜猜看，點選答案就會看到解答。數字為 2025–2026 年公布的政府統計。</p>
+  <div class="warm" id="warmBox"></div>
+  <div class="warm-bar"><span>答對 <span class="score" id="warmScore">0 / 10</span></span><button class="btn" id="warmReset" type="button">重新作答</button></div>
+</section>
+
+<!-- 角色 -->
+<section class="sec" id="role">
+  <div class="eyebrow">開場</div>
+  <h2>我們是長輩在機構裡的「類家屬」</h2>
+  <p>倡導關懷人走進長照機構，陪伴沒有家屬或家屬較少探視的長輩。我們不取代照服員與護理師，我們帶來的是固定出現的面孔、願意聽的耳朵，以及「有人記得我」的感覺。</p>
+  <div class="model" role="list">
+    <div role="listitem"><b>2 人一組</b><span>夥伴互相支援、互相提醒</span></div>
+    <div role="listitem"><b>每月 2 次</b><span>固定節奏，讓長輩有期待</span></div>
+    <div role="listitem"><b>1 比 5</b><span>每次最多關懷 5 位長輩</span></div>
+  </div>
+  <p class="quote">長輩可能忘記你說過的話，<br>但會記得你帶給他的感覺。</p>
+</section>
+
+<!-- 時程 -->
+<section class="sec" id="schedule">
+  <div class="eyebrow">今日安排</div>
+  <h2>課程時程</h2>
+  <div class="tbl">
+    <table class="schedule">
+      <thead><tr><th>時間</th><th>內容</th><th>形式</th></tr></thead>
+      <tbody>
+        <tr><td>10:10–10:20</td><td>開場：倡導關懷人的角色</td><td>講述</td></tr>
+        <tr><td>10:20–11:10</td><td>認識失智、溝通原則、情緒與行為的辨別與應對</td><td>講述＋示範</td></tr>
+        <tr><td>11:10–11:55</td><td>上午分組演練：四個失智情境</td><td>分組角色扮演</td></tr>
+        <tr><td>11:55–12:10</td><td>分享與回饋</td><td>全體討論</td></tr>
+        <tr><td>12:10–13:10</td><td>午餐休息</td><td></td></tr>
+        <tr><td>13:10–14:20</td><td>認識失能、志工的界線、不同狀況的溝通方式、陪伴活動</td><td>講述＋體驗</td></tr>
+        <tr><td>14:20–14:30</td><td>休息</td><td></td></tr>
+        <tr><td>14:30–15:00</td><td>傾聽與情緒支持、一次訪視的流程、觀察與通報</td><td>講述</td></tr>
+        <tr><td>15:00–15:50</td><td>下午分組演練：四個失能情境</td><td>分組角色扮演</td></tr>
+        <tr><td>15:50–16:10</td><td>綜合回饋、照顧自己、Q&amp;A</td><td>全體討論</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 上午 ============ -->
+<div class="part" id="am">
+  <div class="eyebrow">上午 10:10–12:10</div>
+  <h2>與失智患者的溝通及實務演練</h2>
+  <p>先看懂行為背後的需要，再決定怎麼回應。</p>
+</div>
+
+<section class="sec">
+  <h3><span class="secno">1-1</span>失智不是「老了都會這樣」</h3>
+  <p>失智症是大腦疾病造成的認知功能退化，會影響記憶、判斷、語言、方向感與情緒，程度嚴重到影響日常生活。常見類型有阿茲海默症、血管性失智症、路易氏體失智症與額顳葉型失智症，不同類型的表現不太一樣。</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>情況</th><th>一般老化</th><th>失智症</th></tr></thead>
+      <tbody>
+        <tr><td>忘記事情</td><td>忘記部分細節，提醒後會想起來</td><td>整件事都忘了，提醒也想不起來</td></tr>
+        <tr><td>時間地點</td><td>偶爾搞錯今天星期幾</td><td>不知道自己在哪裡、以為還是幾十年前</td></tr>
+        <tr><td>說話</td><td>偶爾一時想不起某個詞</td><td>常說不出要的詞，用「那個、那個」代替，話題重複</td></tr>
+        <tr><td>情緒個性</td><td>大致穩定</td><td>容易焦慮、多疑、易怒或變得退縮冷淡</td></tr>
+        <tr><td>自我察覺</td><td>知道自己記性變差</td><td>常不覺得自己有問題</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">1-2</span>走進失智長輩的世界</h3>
+  <div class="grid2">
+    <div class="box">
+      <h4>記憶像一座書架</h4>
+      <p>最上層放的是最近的事，最底層是年輕時的事。失智像書架從上面開始搖晃，最近的記憶先掉下來，童年、工作、養兒育女的記憶留得最久。所以長輩可能記不得早餐吃什麼，卻能清楚說出當年在哪裡工作。</p>
+    </div>
+    <div class="box">
+      <h4>情緒的記憶留得最久</h4>
+      <p>事實記不住，感覺卻會留下。被糾正、被笑、被催促的不舒服會累積成不安；被溫柔對待的安心感也會留下來，即使他叫不出你的名字，也會對你比較放鬆。</p>
+    </div>
+  </div>
+  <p class="tip"><b>換位想一想：</b>如果你一覺醒來，身邊都是不認識的人，有人告訴你「這是你家」，你卻記得家不是長這樣，你會不會害怕、想回家？許多被稱為「問題行為」的反應，其實是在表達這份害怕。</p>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">1-3</span>和失智長輩說話的七個原則</h3>
+  <ul class="principles">
+    <li><b>從正面靠近，視線同高</b><span>從背後或側邊出聲容易嚇到長輩；坐下或蹲下，讓他看得到你的臉。</span></li>
+    <li><b>每次先自我介紹</b><span>「阿嬤好，我是雙福的志工小美，來陪你聊天。」不要問「你記得我是誰嗎？」</span></li>
+    <li><b>短句、慢說、一次一件事</b><span>一句話只放一個重點，說完停一下，等他回應。</span></li>
+    <li><b>給選擇，不考試</b><span>「你想喝茶還是喝水？」比「你想喝什麼？」容易回答。避免「今天幾號」「我剛剛說什麼」。</span></li>
+    <li><b>不糾正、不爭辯</b><span>他說的是他相信的現實。爭贏了事實，卻輸掉他的信任。</span></li>
+    <li><b>先接住情緒，再處理事情</b><span>先回應「你很擔心喔」，等情緒緩下來，再談其他的。</span></li>
+    <li><b>用他熟悉的語言與稱呼</b><span>台語、客語、國語，或他習慣的稱呼（老師、頭家、阿姨），常能讓他放鬆。</span></li>
+  </ul>
+</section>
+
+<section class="sec" id="orient">
+  <h3><span class="secno">1-4</span>第一次見面：定向感問候</h3>
+  <p>失智長輩常搞不清楚眼前是誰、現在幾點、自己在哪裡，所以對陌生人容易猜疑。<b>定向感問候的重點不是考他，而是由我們主動把人、事、時、地、物介紹清楚</b>，讓他不用猜，自然就安心。</p>
+  <div class="orient">
+    <div><span class="k">人</span><p>我是誰、從哪裡來；怎麼稱呼您</p></div>
+    <div><span class="k">事</span><p>今天來做什麼、會待多久</p></div>
+    <div><span class="k">時</span><p>今天星期幾、上午或下午、快到什麼節日</p></div>
+    <div><span class="k">地</span><p>我們現在在哪裡、坐在什麼地方</p></div>
+    <div><span class="k">物</span><p>我帶了什麼、手上的東西是什麼</p></div>
+  </div>
+  <p class="script">「王奶奶好，<mark>我是雙福基金會的志工小美</mark>，這位是我的夥伴阿明。<mark>今天是星期六上午</mark>，快到中秋節了。<mark>我們在護理之家的交誼廳</mark>，<mark>今天來陪您聊天半個小時</mark>。<mark>我帶了一本老照片</mark>，等一下想跟您一起看。」</p>
+  <div class="grid2">
+    <div class="box dont"><h4>像在考試</h4><ul class="clean"><li>「你知道我是誰嗎？」</li><li>「今天幾月幾號？」</li><li>「你知道這裡是哪裡嗎？」</li></ul></div>
+    <div class="box do"><h4>主動介紹</h4><ul class="clean"><li>「我是志工小美，上次也有來看您。」</li><li>「今天是 10 月 31 日，星期六。」</li><li>「我們在交誼廳，窗外就是花園。」</li></ul></div>
+  </div>
+  <p class="muted">配戴寫著名字的大字名牌，每次見面都完整介紹一次，即使已經認識很久。<button class="btn mini" type="button" data-demo="first">看示範對話</button></p>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">1-5</span>換句話說</h3>
+  <div class="tbl">
+    <table class="say">
+      <thead><tr><th>容易讓長輩受挫的說法</th><th>可以試著這樣說</th></tr></thead>
+      <tbody>
+        <tr><td>「你剛剛不是問過了嗎？」</td><td>「你很在意這件事喔，我再跟你說一次。」</td></tr>
+        <tr><td>「你女兒不會來啦。」</td><td>「你想女兒了。跟我說說她小時候的樣子好不好？」</td></tr>
+        <tr><td>「沒有人偷你的錢！」</td><td>「錢不見了一定很著急，我陪你一起找找看。」</td></tr>
+        <tr><td>「這裡就是你家，不能回去。」</td><td>「你想回家看看。家裡現在誰在等你呢？」</td></tr>
+        <tr><td>「你記得我是誰嗎？」</td><td>「阿伯好，我是志工阿明，上次有來陪你聊天。」</td></tr>
+        <tr><td>「不要亂動，坐好。」</td><td>「我們一起坐下來喝口水，休息一下好嗎？」</td></tr>
+        <tr><td>「你媽媽早就過世了。」</td><td>「你想媽媽了。媽媽以前都煮什麼給你吃？」</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">1-6</span>情緒與行為：先看懂，再回應</h3>
+  <p>失智長輩出現焦慮、多疑、躁動、重複、想回家等情況，醫療上稱為「精神行為症狀（BPSD）」。對志工來說，最重要的一句話是：<b>行為是一種表達。</b>先找原因，常常就找到解方。</p>
+  <div class="grid2">
+    <div class="box"><h4>身體不舒服？</h4><p class="muted">疼痛、口渴、肚子餓、想上廁所、便秘、太熱或太冷、累了、看不清楚、聽不清楚</p></div>
+    <div class="box"><h4>環境讓人不安？</h4><p class="muted">太吵、人太多、光線太暗、陌生的人或事物、作息被打亂、傍晚天色變化</p></div>
+    <div class="box"><h4>心裡有感受？</h4><p class="muted">害怕、孤單、無聊、覺得自己沒用、想念家人、被催促或被當小孩對待</p></div>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th style="width:18%">常見表現</th><th style="width:24%">他可能想說的是</th><th>志工可以這樣做</th><th style="width:96px">示範</th></tr></thead>
+      <tbody>
+        <tr><td><b>重複問同一件事</b></td><td>「我很不安，我需要確定。」</td><td>每次都耐心回答，回應背後的擔心；也可以把答案寫在紙上給他看。</td><td><button class="btn mini" type="button" data-demo="repeat">看示範</button></td></tr>
+        <tr><td><b>說東西被偷了</b></td><td>「我找不到，我覺得失去掌控。」</td><td>不辯解、不指認，陪他一起找；找到時讓他自己「發現」，並告知機構人員。</td><td><button class="btn mini" type="button" data-demo="steal">看示範</button></td></tr>
+        <tr><td><b>想回家、收拾行李</b></td><td>「我覺得這裡不是我的地方，我有責任要回去。」</td><td>問問「家裡有誰在等你」，聊家裡的事；陪他走一走，再自然引導到其他活動。</td><td><button class="btn mini" type="button" data-demo="home">看示範</button></td></tr>
+        <tr><td><b>傍晚特別焦躁（日落症候群）</b></td><td>「天暗了，我好不安／我好累。」</td><td>傍晚訪視時放慢節奏，找光線充足、安靜的地方，給簡單熟悉的事情做。</td><td><button class="btn mini" type="button" data-demo="sundown">看示範</button></td></tr>
+        <tr><td><b>生氣、大聲、推開人</b></td><td>「我害怕／不舒服／不想被這樣對待。」</td><td>先退一步保持距離，放低音量，不要硬拉或碰觸；暫停原本的話題，必要時請機構人員協助。</td><td><button class="btn mini" type="button" data-demo="angry">看示範</button></td></tr>
+        <tr><td><b>看到或聽到不存在的東西</b></td><td>「我真的看到了，我很害怕。」</td><td>不要說「沒有啦」，先回應感受：「聽起來很可怕，我在這裡陪你。」並告知護理人員。</td><td><button class="btn mini" type="button" data-demo="halluc">看示範</button></td></tr>
+        <tr><td><b>退縮、不說話、沒反應</b></td><td>「我累了／我覺得沒有人懂我。」</td><td>不勉強互動，安靜坐在旁邊也是陪伴；可以握手、放熟悉的老歌，給他時間。</td><td><button class="btn mini" type="button" data-demo="withdraw">看示範</button></td></tr>
+        <tr><td><b>找已過世的親人</b></td><td>「我好想他，我需要他在身邊。」</td><td>不提醒對方已過世，回應思念，請他說說那個人的故事。</td><td><button class="btn mini" type="button" data-demo="miss">看示範</button></td></tr>
+        <tr><td><b>不認得志工、拒絕互動</b></td><td>「你是陌生人，我不安全。」</td><td>從正面重新自我介紹，尊重拒絕，預告等一下再來。</td><td><button class="btn mini" type="button" data-demo="stranger">看示範</button></td></tr>
+        <tr><td><b>坐立不安、反覆喊叫</b></td><td>「我身體不舒服，但說不出來。」</td><td>先找身體原因（如廁、疼痛、口渴、太冷熱），描述給機構人員，不自行處理。</td><td><button class="btn mini" type="button" data-demo="restless">看示範</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">1-7</span>應對三步驟：停、接、轉</h3>
+  <ol class="steps">
+    <li><span class="k">停<small>STEP 1</small></span><p>先停下手邊的事與想說的道理。深呼吸，觀察他的表情、身體、周圍環境，想想可能的原因。</p></li>
+    <li><span class="k">接<small>STEP 2</small></span><p>說出你看到的情緒：「你很著急喔」「你在擔心家裡」。讓他知道你懂，不急著解決。</p></li>
+    <li><span class="k">轉<small>STEP 3</small></span><p>情緒緩下來後，轉到他喜歡的話題或活動：老照片、拿手菜、喝口水、到窗邊走走。</p></li>
+  </ol>
+  <p class="muted">順序很重要：沒有先「接」就「轉」，長輩會覺得被敷衍。</p>
+</section>
+
+<section class="sec" id="ymh">
+  <h3><span class="secno">1-8</span>同理三句話：你、我、他</h3>
+  <p>長輩有情緒時，按「你、我、他」的順序說三句話：先替他說出感受，再表達將心比心，最後邀他一起想辦法。可以和「停、接、轉」一起用，它就是「接」到「轉」的說法。</p>
+  <div class="ymh">
+    <div><span class="big">你<small>覺察與代言</small></span><p>覺察到對方的情緒，替他說出來。</p><q>您等了一整個下午，覺得被冷落，很難過。</q></div>
+    <div><span class="big">我<small>將心比心</small></span><p>要是我遇到這樣的事，我也會有這樣的情緒。</p><q>要是我也等這麼久，我也會很難過。</q></div>
+    <div><span class="big">他<small>一起想辦法</small></span><p>不急著說教，邀他一起找出路。</p><q>我們再一起想辦法，好嗎？</q></div>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th style="width:22%">長輩說</th><th>你</th><th>我</th><th>他</th></tr></thead>
+      <tbody>
+        <tr><td>「我的錢包被偷了！」</td><td>錢包不見，您一定很著急。</td><td>要是我的錢包不見，我也會急得團團轉。</td><td>我們一起找找看，好嗎？</td></tr>
+        <tr><td>「我要回家！」</td><td>您很掛念家裡。</td><td>換作是我，離家這麼久也會想回去看看。</td><td>我們先坐下來，您跟我說說家裡的事，再一起想辦法，好嗎？</td></tr>
+        <tr><td>「都沒有人理我。」</td><td>您覺得孤單，好像被忘記了。</td><td>我要是一整天沒人說話，也會很悶。</td><td>我今天陪您坐一下，等一下也一起跟護理師說，好嗎？</td></tr>
+        <tr><td>「我這樣活著是拖累人。」</td><td>您覺得自己沒用，心裡很苦。</td><td>如果我身體這樣，我也會很難接受。</td><td>我們一起想想，有什麼事會讓您舒服一點，好嗎？（並告知護理人員與社工）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">「我」這句是將心比心，不是講自己的故事；說完一句就回到長輩身上。<button class="btn mini" type="button" data-demo="ymh">看示範對話</button></p>
+</section>
+
+<section class="sec" id="dialogue">
+  <h3><span class="secno">1-9</span>示範對話：一句一句看</h3>
+  <p>開頭兩段示範「定向感問候」與「你、我、他」，第三段示範離開時的「4F」，後面十段是十種常見的情緒與行為。選一個情境，按「下一句」逐句看。每一句志工的回應都附上為什麼這樣說；紅色劃線的是容易脫口而出、但要避免的說法。</p>
+  <div class="dlg">
+    <div class="dlg-tabs" role="group" aria-label="選擇示範情境" id="dlgTabs"></div>
+    <p class="dlg-scene" id="dlgScene"></p>
+    <p class="dlg-tech" id="dlgTech"></p>
+    <div class="lines" id="dlgLines" aria-live="polite"></div>
+    <div class="dlg-ctrl">
+      <button class="btn primary" id="dlgNext" type="button">下一句</button>
+      <button class="btn" id="dlgAll" type="button">全部顯示</button>
+      <button class="btn" id="dlgReset" type="button">重來</button>
+      <span class="count" id="dlgCount"></span>
+    </div>
+  </div>
+  <p class="muted">更多溝通方法（STE2P、FOCUSED、確效療法、DICE、避開老人語等）與示範對話，請見 <a href="https://mattsue1003.github.io/dementia-communication-database/" target="_blank" rel="noopener">失智症溝通技巧資料庫</a>。</p>
+</section>
+
+<section class="sec" id="quiz">
+  <h3><span class="secno">1-10</span>換你回應：八題快問快答</h3>
+  <p>長輩說了這句話，你會怎麼回？點選一個答案，看看回饋。目前答對 <span class="score" id="quizScore">0 / 8</span></p>
+  <div class="quiz" id="quizBox"></div>
+  <button class="btn" id="quizReset" type="button" style="align-self:flex-start">重新作答</button>
+</section>
+
+<section class="sec">
+  <div class="alert">
+    <h4>這些時候，請立刻找機構人員</h4>
+    <ul class="clean">
+      <li>長輩有跌倒、受傷、嗆咳、呼吸喘、臉色發白或冒冷汗</li>
+      <li>情緒激動到可能傷害自己或他人，或安撫後仍持續升高</li>
+      <li>長輩說身上很痛、哪裡不舒服，或你發現新的傷口、瘀青</li>
+      <li>長輩執意要離開機構、往出口走</li>
+    </ul>
+    <p>志工的任務是陪伴與觀察，<b>不自行處理醫療或安全狀況</b>。通報機構人員後，訪視結束也請告知社工。</p>
+  </div>
+</section>
+
+<!-- 上午演練 -->
+<section class="sec" id="am-drill">
+  <div class="eyebrow">上午分組演練 11:10–11:55・十個情境</div>
+  <h2>失智情境角色扮演</h2>
+  <p>80 位學員分成 20 組，每組 4 人，對應實際服務的「兩人一組」。十個情境對應 1-5 的十種行為：<b>單數組演情境一、三、五、七、九，雙數組演情境二、四、六、八、十</b>，每組挑其中兩個演出。每個情境演 5 分鐘、討論 5 分鐘，然後輪換角色。演完可以按「看示範對話」對照。</p>
+  <div class="roles">
+    <div><b>長輩</b>依情境演出，感受被回應時的心情</div>
+    <div><b>志工 A</b>主要和長輩對話</div>
+    <div><b>志工 B</b>協助觀察環境、適時接話、需要時找機構人員</div>
+    <div><b>觀察員</b>記下哪句話讓長輩放鬆或更緊張</div>
+  </div>
+  <div class="drill">
+    <article class="card">
+      <span class="tag">情境一・重複詢問</span>
+      <h4>「我女兒什麼時候來接我？」</h4>
+      <p class="who">王奶奶，82 歲，中度失智。你們坐下才 10 分鐘，她已經問了第五次，每次都很認真地看著你。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不說「你剛剛問過了」，每次都像第一次一樣回應</li>
+        <li>回應背後的想念：「你很想女兒喔，她小時候是怎樣的孩子？」</li>
+        <li>把答案寫在紙上，讓她不安時可以看</li>
+        <li>不要承諾「等一下就來」，以免她一直等待而更失落</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="repeat">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境二・被偷妄想</span>
+      <h4>「我的錢包被那個看護偷走了！」</h4>
+      <p class="who">李爺爺，78 歲，一見到你就很激動，指著走廊上的照服員，說她偷了他的錢包。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不附和指控，也不急著幫照服員辯解</li>
+        <li>先接情緒：「錢包不見一定很著急」</li>
+        <li>「我們一起找找看」，從枕頭下、抽屜、外套口袋找起</li>
+        <li>訪視後把狀況告訴機構人員，不在長輩面前討論誰有沒有拿</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="steal">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境三・想回家</span>
+      <h4>「這裡不是我家，我要回去。」</h4>
+      <p class="who">陳奶奶，85 歲，把衣服塞進塑膠袋，說家裡的雞還沒餵，一直往門口走。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不說「這裡就是你家」「家早就賣掉了」</li>
+        <li>順著她的責任感，請她說說家裡和養雞的事</li>
+        <li>陪她走一段，邊走邊聊，再引導到座位坐下</li>
+        <li>如果她堅持往出口走，志工 B 立刻請機構人員協助</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="home">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境四・日落症候群</span>
+      <h4>「怎麼天黑了？好可怕，都沒有人。」</h4>
+      <p class="who">林奶奶，80 歲，下午四點半，窗外天色變暗。她開始來回踱步、拉扯衣角，語氣越來越急。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>放慢自己的速度和音量，站在她看得到的地方</li>
+        <li>帶她到光線亮、人少一點的地方</li>
+        <li>給她簡單熟悉的事做，例如一起摺毛巾、哼老歌</li>
+        <li>告訴機構人員她傍晚容易焦躁，下次訪視可以改早一點</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="sundown">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境五・生氣推開</span>
+      <h4>「不要碰我！你們都要害我！」</h4>
+      <p class="who">黃爺爺，83 歲，你伸手想幫他拉好被子，他突然大吼、用力推開你的手。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>立刻停止動作，退後一步，雙手放在他看得到的地方</li>
+        <li>低聲、慢慢說：「好，我不碰你。」</li>
+        <li>之後要碰觸前，先說要做什麼、等他同意</li>
+        <li>情緒持續升高時，志工 B 去找機構人員</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="angry">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境六・幻覺</span>
+      <h4>「牆角那裡站了一個小孩，一直看我。」</h4>
+      <p class="who">吳奶奶，79 歲，路易氏體失智症。她緊抓你的手臂，眼睛一直盯著空空的牆角。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不說「哪有，你看錯了」，也不假裝自己也看到</li>
+        <li>回應害怕：「你很害怕，我在這裡陪你。」</li>
+        <li>換位置、開燈，減少讓她害怕的陰影</li>
+        <li>告知護理人員，幻覺變多可能和身體狀況或藥物有關</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="halluc">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境七・退縮淡漠</span>
+      <h4>長輩低著頭，不說話也不看你</h4>
+      <p class="who">鄭爺爺，86 歲，過去很愛聊當兵的事。最近三次訪視都低著頭，問什麼都不回答。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不追問「你怎麼了」「為什麼不說話」</li>
+        <li>安靜坐在旁邊，說說今天的天氣或外面的事</li>
+        <li>用非語言回應：握手、哼他年代的軍歌或老歌</li>
+        <li>把「最近變得很少說話」告訴機構人員，留意是否有憂鬱或身體不適</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="withdraw">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境八・思念已故親人</span>
+      <h4>「我太太怎麼還沒回來？」</h4>
+      <p class="who">蔡爺爺，84 歲，太太過世多年。傍晚時他一直望著門口，說太太去市場還沒回來。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不說「阿嬤已經過世了」，避免他再經歷一次失去</li>
+        <li>重述他的話：「您在等太太回來。」</li>
+        <li>說出感受，再問太太的拿手菜、兩人的故事</li>
+        <li>情緒湧上來時，安靜陪著、輕握他的手</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="miss">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境九・不認得你</span>
+      <h4>「你是誰？我不認識你，走開！」</h4>
+      <p class="who">張爺爺，80 歲，你們已經訪視他半年。今天你一靠近，他就把頭轉開，語氣很不耐煩。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>不要說「我上次有來啊，你忘了喔？」</li>
+        <li>停在他看得到的地方，重新自我介紹，放慢、放低音量</li>
+        <li>尊重他的拒絕，預告等一下再來打招呼</li>
+        <li>被拒絕不代表你做錯了</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="stranger">看示範對話</button>
+    </article>
+    <article class="card">
+      <span class="tag">情境十・坐立不安、反覆喊叫</span>
+      <h4>「來人啊！來人啊！」</h4>
+      <p class="who">劉奶奶，88 歲，重度失智，說話不太完整。今天一直扭動身體、反覆喊叫，怎麼安撫都停不下來。</p>
+      <details><summary>參考回應方向</summary><ul class="clean">
+        <li>先停下來觀察：表情、手放在哪裡、坐姿、褲子、周圍環境</li>
+        <li>用是非題問身體狀況：「肚子痛嗎？」「想上廁所嗎？」</li>
+        <li>把看到的事實描述給機構人員，由他們處理</li>
+        <li>回去和夥伴用 DICE 想一想：描述、找原因、可以怎麼做、下次看效果</li>
+      </ul></details>
+      <button class="btn mini" type="button" data-demo="restless">看示範對話</button>
+    </article>
+  </div>
+  <div class="note">
+    <b>演練後討論：</b>演長輩的人說說看，哪一句話讓你覺得被懂？哪一句讓你更想反抗？觀察員分享一個「讓氣氛轉好」的瞬間。
+  </div>
+</section>
+
+<!-- ============ 下午 ============ -->
+<div class="part pm" id="pm">
+  <div class="eyebrow">下午 13:10–16:10</div>
+  <h2>失能長輩的照顧與陪伴</h2>
+  <p>身體做不到的事變多了，被當成「一個人」來對待的需要沒有變少。</p>
+</div>
+
+<section class="sec">
+  <h3><span class="secno">2-1</span>認識失能</h3>
+  <p>失能是指因為疾病、老化或意外，日常生活需要他人協助。機構裡常見的原因有中風、帕金森氏症、骨折或關節退化、心肺疾病、長期臥床，以及肌力下降造成的衰弱。</p>
+  <div class="grid2">
+    <div class="box">
+      <h4>日常生活活動（ADL）</h4>
+      <p class="muted">吃飯、洗澡、穿衣、上廁所、移位（床到椅子）、走路、上下樓梯、大小便控制。需要協助的項目越多，失能程度越重。</p>
+    </div>
+    <div class="box">
+      <h4>失能長輩常有的心情</h4>
+      <p class="muted">失去自主的挫折、覺得自己是負擔、擔心被遺忘、對身體變化的悲傷。有些長輩會用沉默、抱怨或拒絕來表達。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-2</span>志工可以做的，和需要交給專業的</h3>
+  <div class="grid2">
+    <div class="box do">
+      <h4>可以做</h4>
+      <ul class="clean">
+        <li>聊天、傾聽、陪伴</li>
+        <li>讀報、念信、一起看照片</li>
+        <li>陪伴簡單的手部活動、唱歌</li>
+        <li>徵得同意後握手、輕拍手背</li>
+        <li>觀察長輩的情緒與身體變化</li>
+        <li>把長輩的需要轉告機構人員</li>
+      </ul>
+    </div>
+    <div class="box dont">
+      <h4>交給機構人員</h4>
+      <ul class="clean">
+        <li>餵食、餵水、給任何食物或點心</li>
+        <li>扶起、移位、推輪椅過門檻或斜坡</li>
+        <li>翻身、換尿布、協助如廁</li>
+        <li>給藥、調整管路或醫療器材</li>
+        <li>評論機構的照顧方式</li>
+        <li>答應長輩幫忙聯絡家屬或帶東西</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note"><b>為什麼不能餵食？</b>很多失能長輩有吞嚥困難，食物需要特別的質地與姿勢，不小心就可能嗆到甚至吸入性肺炎。帶點心前，一定先問護理站。</p>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-3</span>不同狀況，不同的溝通方式</h3>
+  <div class="grid2">
+    <div class="box">
+      <h4>聽力不好</h4>
+      <ul class="clean">
+        <li>坐在他聽得比較清楚的那一側</li>
+        <li>降低音調、放慢速度，不是大吼</li>
+        <li>讓他看到你的嘴型，關掉電視</li>
+        <li>聽不懂時換個說法，或寫在紙上</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>視力不好</h4>
+      <ul class="clean">
+        <li>靠近時先出聲並說出名字</li>
+        <li>輕觸手背讓他知道你的位置</li>
+        <li>描述環境：「今天外面出太陽」</li>
+        <li>離開時要告訴他，不要突然走掉</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>中風、說話困難（失語）</h4>
+      <ul class="clean">
+        <li>他聽得懂，只是說不出來，別當成小孩</li>
+        <li>問「是／不是」能回答的問題</li>
+        <li>給足等待時間，不急著幫他說完</li>
+        <li>用點頭、手勢、圖卡、寫字輔助</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>臥床、反應少</h4>
+      <ul class="clean">
+        <li>假設他聽得到，一樣打招呼、自我介紹</li>
+        <li>說說今天的天氣、節日、外面的事</li>
+        <li>輕聲哼他年代的歌，或念一段文章</li>
+        <li>注意表情、眼神、手指的細微回應</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-4</span>陪伴活動百寶箱</h3>
+  <p>依長輩的能力和當天精神選擇，不求完成，只求有連結。</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th style="width:24%">長輩狀況</th><th>適合的活動</th></tr></thead>
+      <tbody>
+        <tr><td><b>能說話、精神好</b></td><td>懷舊聊天（年輕時的工作、家鄉、拿手菜）、看老照片、聊節慶（中秋、冬至、過年）、一起唱老歌、念報紙新聞</td></tr>
+        <tr><td><b>坐輪椅、手還能動</b></td><td>手指操、拍手唱歌、摺紙、著色、挑豆子、傳球、觸摸不同材質的布料</td></tr>
+        <tr><td><b>說話困難</b></td><td>聽音樂、看圖卡選喜歡的、用表情圖表達今天心情、一起看窗外</td></tr>
+        <tr><td><b>臥床、反應少</b></td><td>輕聲說話、哼歌、徵得同意的手部輕撫、念一段他信仰的經文或熟悉的故事</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tip"><b>小工具建議：</b>一本有大圖的老台灣照片集、幾首長輩年代的老歌（如〈望春風〉〈月亮代表我的心〉）、表情圖卡、一張寫著自己名字的大字名牌。</p>
+</section>
+
+<section class="sec" id="activities">
+  <h3><span class="secno">2-5</span>陪伴活動教案庫：點圖進入教案網頁</h3>
+  <p>以下教案網頁都有步驟動畫或影片，多數附 A4 學習單可列印。訪視時每位長輩約 15–20 分鐘，挑一個小段落就好；活動是聊天的媒介，做不完沒關係。</p>
+  <div class="note"><b>帶活動前先確認：</b>用品要先問過機構可不可以帶進來。失智或吞嚥困難的長輩，避免黏土、珠子等容易放進嘴裡的小東西；剪刀由志工保管。長輩說累了就停。</div>
+
+  <div class="song" id="song">
+    <div class="eyebrow" style="color:var(--marigold)">最新教案推薦</div>
+    <h4 style="margin:0;font-size:22px">台灣金曲猜歌：從 50 年代唱到 2026</h4>
+    <p>九個年代、每個年代 20 首，共 180 首。聽前奏猜歌名，猜不到就一次給一點提示，公布答案後一起唱，再用「一起聊聊」的問題延伸成懷舊對話。陪伴長輩時建議從 50、60、70 年代開始，一次只玩 2–3 首。</p>
+    <div class="shots">
+      <figure><img src="activity-shots/song-1-home.jpg" alt="猜歌首頁：選擇年代" loading="lazy"><figcaption><b>步驟 1</b>　選一個年代，長輩建議選 50–70 年代</figcaption></figure>
+      <figure><img src="activity-shots/song-2-question.jpg" alt="猜歌題目畫面：按一下播前奏" loading="lazy"><figcaption><b>步驟 2</b>　按橘色按鈕播前奏，讓大家自由喊歌名</figcaption></figure>
+      <figure><img src="activity-shots/song-3-hint.jpg" alt="猜歌提示畫面：顯示歌詞提示" loading="lazy"><figcaption><b>步驟 3</b>　猜不到按「提示」，一次給一句歌詞</figcaption></figure>
+      <figure><img src="activity-shots/song-4-answer.jpg" alt="公布答案畫面：歌名、小故事與一起聊聊" loading="lazy"><figcaption><b>步驟 4</b>　公布答案，看歌曲小故事，用「一起聊聊」延伸話題</figcaption></figure>
+    </div>
+    <ul class="clean">
+      <li>需要連網；機構網路不穩時可用「本機音樂」播放自己準備的檔案</li>
+      <li>手機音量開大、靠近長輩聽力較好的那一側；重聽長輩可以直接看歌詞提示一起唱</li>
+      <li>在公開場合播放，請留意公播授權</li>
+    </ul>
+    <a class="btn primary" href="https://mattsue1003.github.io/pop-song-guess/" target="_blank" rel="noopener" style="align-self:flex-start;text-decoration:none">開啟猜歌教案 →</a>
+  </div>
+
+  <div class="act-group">
+    <h4>聊天、音樂與動一動</h4>
+    <div class="acts">
+      <a class="act" href="https://mattsue1003.github.io/dementia-activity-database/" target="_blank" rel="noopener"><img src="activity-shots/dementia-activity-database.jpg" alt="失智長輩活動資料庫首頁畫面" loading="lazy"><span class="body"><b>失智長輩活動資料庫</b><p>86 份教案與活動點子、120 支影片，可依場域與失智程度挑活動。</p><span class="fit">適合：找活動點子的起點</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/eye-brain-taigi/" target="_blank" rel="noopener"><img src="activity-shots/eye-brain-taigi.jpg" alt="目睭大腦作伙動畫面" loading="lazy"><span class="body"><b>目睭大腦作伙動（台語）</b><p>台語互動簡報，看圖找不同、動腦又護眼。</p><span class="fit">適合：說台語、視力尚可的長輩</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/japan-dayservice-activity-videos/" target="_blank" rel="noopener"><img src="activity-shots/japan-dayservice-activity-videos.jpg" alt="日本日照團康與體操影片資料庫畫面" loading="lazy"><span class="body"><b>日本日照團康與體操影片</b><p>坐著也能做的手部體操與團康，中文說明。</p><span class="fit">適合：坐輪椅、手還能動</span><span class="go">開啟教案 →</span></span></a>
+    </div>
+  </div>
+
+  <div class="act-group">
+    <h4>上色與畫畫</h4>
+    <div class="acts">
+      <a class="act" href="https://mattsue1003.github.io/fingerprint-swab-art/" target="_blank" rel="noopener"><img src="activity-shots/fingerprint-swab-art.jpg" alt="指紋棉花棒創作畫面" loading="lazy"><span class="body"><b>指紋棉花棒創作</b><p>手指或棉花棒沾顏料點畫，握力弱也做得到。</p><span class="fit">適合：手部力量弱、中風單手</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/hakka-floral-generator/" target="_blank" rel="noopener"><img src="activity-shots/hakka-floral-generator.jpg" alt="大花布紙本生成器畫面" loading="lazy"><span class="body"><b>大花布上色</b><p>牡丹、梅花、菊花的客家花布圖樣，可做書籤、紅包袋。</p><span class="fit">適合：喜歡傳統圖樣、可聊年節回憶</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/window-lattice-generator/" target="_blank" rel="noopener"><img src="activity-shots/window-lattice-generator.jpg" alt="窗櫺紋紙本生成器畫面" loading="lazy"><span class="body"><b>窗櫺紋上色</b><p>老房子窗花的吉祥花樣，上色、剪紙或做卡片。</p><span class="fit">適合：可聊老家、三合院記憶</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/mandala-lessons/" target="_blank" rel="noopener"><img src="activity-shots/mandala-lessons.jpg" alt="曼陀羅教學畫面" loading="lazy"><span class="body"><b>曼陀羅一圈一圈畫</b><p>24 課教學動畫與 A4 學習單，安靜專注。</p><span class="fit">適合：喜歡安靜、容易焦躁的長輩</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/tangle-steps/" target="_blank" rel="noopener"><img src="activity-shots/tangle-steps.jpg" alt="纏繞畫步驟示範畫面" loading="lazy"><span class="body"><b>纏繞畫</b><p>重複的簡單線條組成圖案，方形、圓形各 12 課。</p><span class="fit">適合：能握筆、認知較好的長輩</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/dot-copy-drawing/" target="_blank" rel="noopener"><img src="activity-shots/dot-copy-drawing.jpg" alt="點格仿畫畫面" loading="lazy"><span class="body"><b>點格仿畫・運筆練習</b><p>照著點陣連線仿畫，30 課由簡到難。</p><span class="fit">適合：輕度認知退化、想動動腦</span><span class="go">開啟教案 →</span></span></a>
+    </div>
+  </div>
+
+  <div class="act-group">
+    <h4>手作</h4>
+    <div class="acts">
+      <a class="act" href="https://mattsue1003.github.io/torn-paper-mosaic/" target="_blank" rel="noopener"><img src="activity-shots/torn-paper-mosaic.jpg" alt="撕貼畫馬賽克畫面" loading="lazy"><span class="body"><b>撕貼畫・馬賽克</b><p>撕色紙貼成圖案，不用剪刀，手指活動量剛好。</p><span class="fit">適合：大多數長輩，安全好上手</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/plate-weaving-pipecleaner/" target="_blank" rel="noopener"><img src="activity-shots/plate-weaving-pipecleaner.jpg" alt="紙盤編織毛根造型畫面" loading="lazy"><span class="body"><b>紙盤編織・毛根造型</b><p>在紙盤上穿線編織，附實際大小 A4 模板。</p><span class="fit">適合：雙手能協調、以前會做女紅</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/square-knot-bracelet/" target="_blank" rel="noopener"><img src="activity-shots/square-knot-bracelet.jpg" alt="平結手環畫面" loading="lazy"><span class="body"><b>平結手環</b><p>簡易編繩 12 課，完成後可以送給家人或志工。</p><span class="fit">適合：手指靈活、喜歡做禮物</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/quilling-lessons/" target="_blank" rel="noopener"><img src="activity-shots/quilling-lessons.jpg" alt="衍紙捲紙教案畫面" loading="lazy"><span class="body"><b>衍紙・捲紙</b><p>把紙條捲成花朵，10 種基本捲法。</p><span class="fit">適合：手指細動作尚可的長輩</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/clay-modeling-lessons/" target="_blank" rel="noopener"><img src="activity-shots/clay-modeling-lessons.jpg" alt="輕黏土造型教案畫面" loading="lazy"><span class="body"><b>輕黏土造型</b><p>8 個基本功與 24 個主題，捏、搓、壓訓練手部力量。</p><span class="fit">適合：認知清楚的長輩；失智長輩避免誤食</span><span class="go">開啟教案 →</span></span></a>
+      <a class="act" href="https://mattsue1003.github.io/balloon-twisting-lessons/" target="_blank" rel="noopener"><img src="activity-shots/balloon-twisting-lessons.jpg" alt="折氣球互動教案畫面" loading="lazy"><span class="body"><b>折氣球</b><p>志工折、長輩挑顏色和造型，熱鬧又有驚喜。</p><span class="fit">適合：節慶訪視、臥床長輩當觀眾</span><span class="go">開啟教案 →</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-6</span>傾聽與情緒支持</h3>
+  <div class="grid2">
+    <div class="box do">
+      <h4>好的傾聽是這樣</h4>
+      <ul class="clean">
+        <li><b>專注：</b>手機收起來，身體微微向前</li>
+        <li><b>反映：</b>「聽起來你很想念以前的生活」</li>
+        <li><b>開放式問題：</b>「那時候你怎麼撐過來的？」</li>
+        <li><b>允許沉默：</b>安靜也是陪伴</li>
+        <li><b>肯定：</b>「你把孩子養大，真的很不簡單」</li>
+      </ul>
+    </div>
+    <div class="box dont">
+      <h4>出於好意，卻容易關上話匣子</h4>
+      <ul class="clean">
+        <li>「別想那麼多啦」</li>
+        <li>「你要加油喔」</li>
+        <li>「至少你還有……」</li>
+        <li>「我阿嬤也這樣，她後來……」</li>
+        <li>急著給建議或講道理</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert">
+    <h4>長輩說「我不想活了」「活著沒意思」時</h4>
+    <ul class="clean">
+      <li>認真看待，不要說「不要亂講」，也不要轉移話題</li>
+      <li>平靜地回應：「你一定很辛苦，可以多跟我說一點嗎？」</li>
+      <li>不答應幫他保密</li>
+      <li>當天就告知機構護理人員與雙福社工</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-7</span>一次訪視的流程</h3>
+  <ol class="timeline">
+    <li><span class="t">出發前</span><span>和夥伴確認時間、今天要拜訪的 5 位長輩，翻翻上次紀錄。身體不舒服或感冒時改期，不帶病訪視。</span></li>
+    <li><span class="t">抵達報到</span><span>洗手，到護理站打招呼，問問長輩最近狀況：「有誰身體不舒服或剛住院回來嗎？」</span></li>
+    <li><span class="t">逐一拜訪</span><span>每位約 15–20 分鐘。先自我介紹、坐下、視線同高，依長輩當天狀態調整，不勉強。</span></li>
+    <li><span class="t">好好告別</span><span>結束前 3–5 分鐘就開始收尾，用 <a href="#leave">4F 告別法</a>：回顧今天（Fact）、預告下次（Future）、帶到接下來的事（Focus）、說出感謝與感受（Feeling）。握手道別，不要趁他不注意溜走。</span></li>
+    <li><span class="t">離開前</span><span>把觀察到的狀況告訴機構人員，洗手後離開。</span></li>
+    <li><span class="t">回去後</span><span>填寫訪視紀錄，與夥伴聊聊今天的感受；有需要時聯絡社工。</span></li>
+  </ol>
+</section>
+
+<section class="sec" id="leave">
+  <h3><span class="secno">2-8</span>離開時的 4F：好好說再見</h3>
+  <p>長輩最怕的是「人突然不見了」。匆忙離開，容易讓長輩覺得被丟下，下次也比較難建立信任。訪視結束前 3–5 分鐘就開始收尾，用四個 F 慢慢把這次的陪伴收好。</p>
+  <ol class="steps steps4">
+    <li><span class="k">Fact<small>事實回顧</small></span><p>說說今天一起做了什麼，幫長輩把這段時間留下來。</p><p class="muted">「今天我們看了老照片，您還教我唱〈望春風〉。」</p></li>
+    <li><span class="k">Future<small>預告下次</small></span><p>說清楚下次什麼時候、誰會來、要做什麼，讓他有期待。</p><p class="muted">「兩個禮拜後的星期六上午，我和阿明再來，我們再看照片。」</p></li>
+    <li><span class="k">Focus<small>帶到接下來</small></span><p>把他的注意力帶到我們離開後的事情，不留空白。</p><p class="muted">「等一下就要吃午餐了，照服員小琪會來帶您去餐廳。」</p></li>
+    <li><span class="k">Feeling<small>感謝與感受</small></span><p>說出你的感受和感謝，也聽聽他今天的感受，握手道別。</p><p class="muted">「今天跟您聊天我很開心，謝謝您。您今天覺得怎麼樣？」</p></li>
+  </ol>
+  <div class="note"><b>小提醒：</b>可以把下次來的日期寫在紙條或月曆上留給長輩（記得先問機構可不可以）。失智長輩如果不想讓你走、開始拉著你，先用「你、我、他」接住情緒：「您捨不得我走（你），我也很捨不得（我），我們一起把下次的日子寫下來，好嗎？（他）」</div>
+  <p class="muted"><button class="btn mini" type="button" data-demo="bye">看示範對話</button></p>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-9</span>觀察與通報：志工是另一雙眼睛</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th style="width:22%">觀察面向</th><th>留意這些變化</th></tr></thead>
+      <tbody>
+        <tr><td><b>身體</b></td><td>新的瘀青或傷口、皮膚發紅破皮、喘、咳嗽、發燒、明顯變瘦、吃不下</td></tr>
+        <tr><td><b>精神</b></td><td>比上次更沒精神、更混亂、嗜睡、突然叫不出常用的詞</td></tr>
+        <tr><td><b>情緒</b></td><td>常哭、說不想活、對什麼都沒興趣、突然變得很害怕某個人</td></tr>
+        <tr><td><b>生活</b></td><td>衣物不乾淨、身邊沒有呼叫鈴或眼鏡助聽器、長輩反映被不當對待</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">通報方式：當場告知機構人員，事後告知雙福社工。只描述看到與聽到的事實，不下判斷、不在長輩或其他住民面前討論。</p>
+</section>
+
+<section class="sec">
+  <h3><span class="secno">2-10</span>也要照顧好自己</h3>
+  <div class="grid2">
+    <div class="box"><h4>被拒絕時</h4><p>長輩的拒絕通常和疾病、疼痛或當天心情有關，不是針對你。換個時間、換個人，常常就不一樣。</p></div>
+    <div class="box"><h4>長輩離世時</h4><p>相處久了會有感情，難過是自然的。可以和夥伴一起回想陪伴的片段，也可以請社工安排分享與支持。</p></div>
+    <div class="box"><h4>覺得累了</h4><p>陪伴是長跑。睡不好、提不起勁、一想到訪視就有壓力時，先跟社工說，適時休息也是負責任。</p></div>
+  </div>
+</section>
+
+<!-- 下午演練 -->
+<section class="sec" id="pm-drill">
+  <div class="eyebrow">下午分組演練 15:00–15:50</div>
+  <h2>失能情境角色扮演</h2>
+  <p>同樣 4 人一組、輪換角色。演長輩的人可以戴上耳塞、閉上眼睛，或用手比代替說話，體驗失能的感受。</p>
+  <div class="drill">
+    <article class="card">
+      <span class="tag">情境一・聽力退化</span>
+      <h4>「蛤？你說什麼？算了算了。」</h4>
+      <p class="who">林阿公，88 歲，重聽，助聽器放在抽屜沒戴。你說了兩次他都聽不清楚，開始揮手不想聊。</p>
+      <details>
+        <summary>參考回應方向</summary>
+        <ul class="clean">
+          <li>移到他耳朵比較好的那一側，關掉附近的電視</li>
+          <li>降低音調、慢慢說，讓他看見你的嘴型</li>
+          <li>準備紙筆或大字卡，寫下關鍵字</li>
+          <li>可以問護理站是否能協助戴上助聽器</li>
+        </ul>
+      </details>
+    </article>
+    <article class="card">
+      <span class="tag">情境二・中風失語</span>
+      <h4>長輩只能發出「嗯、嗯」的聲音</h4>
+      <p class="who">黃阿姨，70 歲，中風後右側無力、說話困難。她一直用左手指著床頭櫃，表情很著急。</p>
+      <details>
+        <summary>參考回應方向</summary>
+        <ul class="clean">
+          <li>放慢，告訴她：「不急，我們慢慢來。」</li>
+          <li>用是非題縮小範圍：「是要這個杯子嗎？」「是照片嗎？」</li>
+          <li>讀她的表情與點頭，不要猜一猜就放棄</li>
+          <li>如果是要喝水或身體需求，請照服員協助，不自己餵</li>
+        </ul>
+      </details>
+    </article>
+    <article class="card">
+      <span class="tag">情境三・拒絕互動</span>
+      <h4>「你們來幹嘛？我不需要人可憐。」</h4>
+      <p class="who">吳伯伯，76 歲，退休公務員，車禍後雙腿無法行走。每次都背對你們，語氣冷淡。</p>
+      <details>
+        <summary>參考回應方向</summary>
+        <ul class="clean">
+          <li>尊重他的自尊，不要用安慰小孩的語氣</li>
+          <li>請他當「老師」：「聽說你以前在公家機關，那時候辦事是怎樣的？」</li>
+          <li>短短打招呼也算數，固定出現本身就是訊息</li>
+          <li>給他選擇：「今天想聊聊還是我們下次再來？」</li>
+        </ul>
+      </details>
+    </article>
+    <article class="card">
+      <span class="tag">情境四・情緒低落</span>
+      <h4>「我這樣活著只是拖累人。」</h4>
+      <p class="who">周奶奶，84 歲，長期臥床。今天她握著你的手掉眼淚，說兒子很久沒來，不如早點走。</p>
+      <details>
+        <summary>參考回應方向</summary>
+        <ul class="clean">
+          <li>不說「別亂講」「要想開一點」，先陪她把話說完</li>
+          <li>反映感受：「你很想兒子，也覺得自己沒用，對不對？」</li>
+          <li>肯定她的價值：「你跟我說的故事，我都記得。」</li>
+          <li>不承諾保密，離開前告知護理人員，當天回報社工</li>
+        </ul>
+      </details>
+    </article>
+  </div>
+  <div class="note">
+    <b>演練後討論：</b>演長輩的人分享，當聽不清楚、說不出話時，你最希望志工怎麼做？哪個動作讓你覺得被尊重？
+  </div>
+</section>
+
+<!-- 口袋卡 -->
+<section class="sec" id="pocket">
+  <div class="eyebrow">帶著走</div>
+  <h2>訪視口袋卡</h2>
+  <div class="pocket">
+    <div class="cols">
+      <div class="stack">
+        <h3>見面時</h3>
+        <ul class="clean">
+          <li>從正面靠近，坐下、視線同高</li>
+          <li>定向感問候：人、事、時、地、物都介紹</li>
+          <li>叫他習慣的稱呼</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>聊天時</h3>
+        <ul class="clean">
+          <li>短句、慢說、給選擇</li>
+          <li>不糾正、不爭辯、不考試</li>
+          <li>先接情緒，再處理事情</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>卡住時</h3>
+        <ul class="clean">
+          <li>停：觀察可能的原因</li>
+          <li>接：說出他的感受</li>
+          <li>轉：換話題或換活動</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>離開時 4F</h3>
+        <ul class="clean">
+          <li>Fact：今天一起做了什麼</li>
+          <li>Future：下次什麼時候來</li>
+          <li>Focus：接下來要做什麼</li>
+          <li>Feeling：謝謝您，握手道別</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>一定要找人</h3>
+        <ul class="clean">
+          <li>跌倒、受傷、嗆咳、不舒服</li>
+          <li>情緒失控、想離開機構</li>
+          <li>說不想活、說被欺負</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 交通聯絡 -->
+<section class="sec" id="info">
+  <div class="eyebrow">交通與聯絡</div>
+  <h2>上課地點與聯絡方式</h2>
+  <div class="contact">
+    <div class="box">
+      <h4>上課地點</h4>
+      <p>新莊裕民行政大樓 6 樓禮堂</p>
+      <p class="muted">新北市新莊區裕民里裕民街 136 號 6 樓</p>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%8C%97%E5%B8%82%E6%96%B0%E8%8E%8A%E5%8D%80%E8%A3%95%E6%B0%91%E8%A1%97136%E8%99%9F" target="_blank" rel="noopener">在 Google 地圖開啟</a></p>
+    </div>
+    <div class="box">
+      <h4>停車資訊</h4>
+      <ul class="clean">
+        <li>勝利停車場（步行約 5 分鐘）</li>
+        <li>全順停車場（步行約 6 分鐘）</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>聯絡人：社工 蔡辰羿</h4>
+      <p class="phone">0963-598-419</p>
+      <p class="phone">02-8953-6701</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  雙福社會福利慈善事業基金會 新北服務中心｜倡導關懷志工培訓講義。講義中的長輩情境為教學用的虛構案例。
+</footer>
+
+</div>
+
+<script>
+(function(){
+  // 示範對話：e=長輩, v=志工, x=避免說（附 why）；key 對應 data-demo，tech 對應溝通技巧資料庫的方法
+  var DIALOGS=[
+    {key:"first",name:"第一次見面",tech:["定向感問候","STE2P 溝通5撇步"],scene:"第一次訪視，王奶奶坐在交誼廳，看到兩個陌生人走近，身體往後縮。",lines:[
+      ["x","避免這樣開場","奶奶，你知道我們是誰嗎？今天幾號你知道嗎？","一開口就考試，答不出來會挫折，也更猜疑陌生人。"],
+      ["v","志工","（從正面走近，蹲低，微笑）王奶奶好，我是雙福基金會的志工小美，這位是我的夥伴阿明。","人：先說清楚我是誰、從哪裡來，降低猜疑。"],
+      ["e","王奶奶","雙福？做什麼的？"],
+      ["v","志工","我們每個月來兩次，陪奶奶們聊天。今天會陪您坐半個小時左右。","事：說明來做什麼、待多久，讓她心裡有底。"],
+      ["v","志工","今天是星期六上午，外面出太陽，快到中秋節了。","時：主動告訴她時間，不是問她。"],
+      ["v","志工","我們現在在護理之家的交誼廳，窗外就是花園。","地：說明現在在哪裡。"],
+      ["v","志工","我帶了一本老照片，有以前的市場和火車站，等一下想跟您一起看。","物：介紹手上的東西，也預告等一下要做的事。"],
+      ["e","王奶奶","（身體放鬆）火車站喔，我以前常常去坐車。"],
+      ["v","志工","真的嗎？您以前都坐車去哪裡？","她開始說話了，就跟著她的話題走。"]
+    ]},
+    {key:"ymh",name:"你・我・他",tech:["你我他同理三句","確效療法"],scene:"下午，林阿嬤一看到志工就抱怨，語氣很衝。",lines:[
+      ["e","林阿嬤","你們這裡都沒人理我！我按鈴按半天都沒人來！"],
+      ["x","避免這樣回","他們很忙啦，不是故意的。","急著解釋或替別人說話，阿嬤會覺得自己的感受不重要。"],
+      ["v","志工","阿嬤，您按了很久都沒人來，覺得被冷落，很生氣也很委屈。","你：覺察她的情緒，替她說出來。"],
+      ["e","林阿嬤","對啊！我又不是故意要麻煩人。"],
+      ["v","志工","要是我在那邊等這麼久，我也會很著急、很難過。","我：將心比心，讓她知道這樣的情緒很正常。"],
+      ["e","林阿嬤","（聲音小下來）我只是想上廁所……"],
+      ["v","志工","原來是想上廁所。我們一起想辦法，我現在陪您請照服員過來，好嗎？","他：邀她一起想辦法，並立刻找機構人員協助如廁。"],
+      ["e","林阿嬤","好，你陪我。"],
+      ["v","志工","我在這裡陪您。等一下我們也一起跟護理師說，按鈴要怎樣比較快有人來。","陪伴等待，事後把狀況轉告機構人員。"]
+    ]},
+    {key:"bye",name:"離開時 4F",tech:["4F 告別法","你我他同理三句"],scene:"訪視快結束了，陳奶奶聊得正開心，志工還要去看下一位長輩。",lines:[
+      ["x","避免這樣離開","（看一下手錶）奶奶我先走囉，掰掰！","突然結束，長輩會覺得被丟下，也來不及準備。"],
+      ["v","志工","奶奶，我們今天一起看了老照片，您還教我唱〈望春風〉，唱得好好聽。","Fact：回顧今天一起做的事，把這段時間留下來。"],
+      ["e","陳奶奶","對啊，那首歌我年輕時最愛唱。"],
+      ["v","志工","兩個禮拜後的星期六上午，我跟阿明會再來，到時候換您教我們唱另一首。","Future：說清楚下次什麼時候、誰會來、要做什麼，讓她有期待。"],
+      ["e","陳奶奶","這麼快就要走了喔……"],
+      ["v","志工","您捨不得我們走。我也很捨不得，今天聊得好開心。我們把下次的日子寫在這張紙上，好嗎？","遇到不捨，用「你、我、他」接住情緒，再一起做一件小事。"],
+      ["v","志工","等一下就要吃午餐了，照服員小琪會來帶您去餐廳，今天有您喜歡的魚湯喔。","Focus：把注意力帶到接下來的事，不留空白。"],
+      ["v","志工","（握住她的手）謝謝奶奶今天陪我聊天，我很開心。您今天覺得怎麼樣？","Feeling：說出感受與感謝，也聽聽她的感受。"],
+      ["e","陳奶奶","很高興啊，你們要再來喔。"],
+      ["v","志工","一定會。奶奶再見！（揮手，等她回應再離開）","好好道別，讓她看著你離開，不要趁她不注意溜走。"]
+    ]},
+    {key:"repeat",name:"重複詢問",tech:["確效療法","提問技巧","生命故事與懷舊"],scene:"王奶奶坐下十分鐘，已經第五次問同一個問題。",lines:[
+      ["e","王奶奶","我女兒什麼時候來接我？"],
+      ["x","避免這樣回","你剛剛問過了啦，等一下就來。","「問過了」像在指責她記性差；「等一下就來」是做不到的承諾，她會一直等。"],
+      ["v","志工","您在等女兒來。","每次都像第一次聽到一樣，用她的話重述。"],
+      ["e","王奶奶","對啊，她說要來的。"],
+      ["v","志工","您很想她。她叫什麼名字？","說出感受，再問她答得出來的事實性問題。"],
+      ["e","王奶奶","阿美啊，很乖的女兒。"],
+      ["v","志工","阿美小時候是怎樣的孩子？","把「等待」轉成「回憶」，讓想念變成可以分享的故事。"],
+      ["e","王奶奶","她很會讀書，每次都考第一名……"],
+      ["v","志工","（寫一張紙條放她手邊：「阿美平安，會再來看您」）您擔心的時候可以看看這張。","把讓她安心的話寫下來，焦慮再出現時有依靠。內容不寫做不到的時間。"]
+    ]},
+    {key:"steal",name:"說東西被偷",tech:["確效療法","提問技巧","轉移與重新導向"],scene:"李爺爺一見到志工就很激動，說錢包被照服員偷走了。",lines:[
+      ["e","李爺爺","我的錢包被那個看護偷走了！"],
+      ["x","避免這樣回","不會啦，她人很好，不會拿你的東西。","替別人辯解，等於說他在說謊，他會更生氣。"],
+      ["v","志工","錢包不見了，一定很著急。","先接住情緒，不判斷誰對誰錯。"],
+      ["e","李爺爺","裡面有我的身分證，還有錢！"],
+      ["v","志工","那些都很重要。您最後一次看到它是在哪裡？","問人事時地，不問「為什麼」，讓他回到能回答的事情上。"],
+      ["e","李爺爺","我都放在枕頭旁邊……"],
+      ["v","志工","我們一起找找看，您看枕頭這邊，我看抽屜。","陪他一起找，讓他有參與感和掌控感。"],
+      ["e","李爺爺","（翻出外套口袋）在這裡！"],
+      ["v","志工","找到了，還是您記得放哪裡。","讓他自己「發現」，保住他的面子。離開後再告訴機構人員。"]
+    ]},
+    {key:"home",name:"想回家",tech:["確效療法","生命故事與懷舊","轉移與重新導向"],scene:"陳奶奶把衣服塞進塑膠袋，一直往門口走。",lines:[
+      ["e","陳奶奶","這裡不是我家，我要回去，雞還沒餵。"],
+      ["x","避免這樣回","奶奶，這裡就是你家，你哪裡都不能去。","否定她的感受又限制她，只會讓她更想逃離。"],
+      ["v","志工","您擔心家裡的雞沒人餵。","先說出她背後的責任感與擔心。"],
+      ["e","陳奶奶","對啊，牠們會餓死的。"],
+      ["v","志工","您養了幾隻雞？都餵什麼？","用具體的問題，把焦點從「出門」轉到「回憶」。"],
+      ["e","陳奶奶","十幾隻啊，餵米糠，早上一隻一隻叫來吃。"],
+      ["v","志工","您好會照顧。我們邊走邊說，您教我怎麼叫雞好不好？","陪她走一段，邊走邊聊，不硬擋。"],
+      ["e","陳奶奶","（笑）咕咕咕……要這樣叫。"],
+      ["v","志工","（走到交誼廳的椅子旁）我們坐這裡，您再教我一次。","情緒穩了，再自然引導坐下。若她仍堅持往出口走，請機構人員協助。"]
+    ]},
+    {key:"sundown",name:"日落症候群",tech:["非語言溝通","轉移與重新導向","避開老人語"],scene:"下午四點半，窗外變暗，林奶奶開始來回踱步、拉扯衣角。",lines:[
+      ["e","林奶奶","怎麼天黑了？好可怕，都沒有人……"],
+      ["x","避免這樣回","乖喔，不要怕不要怕，奶奶最乖了。","疊字、叫「乖」是哄小孩的「老人語」，容易讓長輩覺得不被尊重而更抗拒。"],
+      ["v","志工","（站到她面前，放慢放低聲音）林奶奶，我是志工小芳，我在這裡。","從正面靠近，用平穩的語氣讓她知道有人在。"],
+      ["e","林奶奶","我要找人，天黑了要怎麼辦……"],
+      ["v","志工","天暗了讓人心慌。我們去那邊比較亮的地方坐，好嗎？","說出感受，再用一個簡單的選擇改變環境。"],
+      ["e","林奶奶","（跟著走過去，仍在搓手）"],
+      ["v","志工","奶奶，這些毛巾可以請您幫忙摺嗎？您摺得一定比我整齊。","給熟悉、簡單、有用處的事情做，讓手和心都有地方放。"],
+      ["e","林奶奶","（開始摺）要這樣對齊……"],
+      ["v","志工","（輕輕哼〈望春風〉）","音樂能幫忙安定。離開前把「傍晚容易焦躁」告訴機構人員，下次可以早一點來。"]
+    ]},
+    {key:"angry",name:"生氣推開",tech:["照顧前的口語提示","非語言溝通","照顧者的情緒急救"],scene:"志工伸手想幫黃爺爺拉好被子，他突然大吼、推開志工的手。",lines:[
+      ["e","黃爺爺","不要碰我！你們都要害我！"],
+      ["x","避免這樣回","我是要幫你耶，你怎麼這樣！","用自己的委屈回應，會讓衝突升高。"],
+      ["v","志工","（停下動作，退後一步，雙手放在他看得到的地方）好，我不碰您。","先讓他覺得安全：停止、拉開距離、手讓他看得到。"],
+      ["e","黃爺爺","你們都一樣！"],
+      ["v","志工","（深呼吸，放低聲音）剛剛嚇到您了，對不起。","先穩住自己，再承認他的感受，不爭對錯。"],
+      ["e","黃爺爺","……我會冷，可是不要突然拉我。"],
+      ["v","志工","我知道了。我想把被子拉到您肩膀，可以嗎？","照顧前先說要做什麼、一次一步、說完等他同意。"],
+      ["e","黃爺爺","（點頭）"],
+      ["v","志工","（慢慢拉好被子）這樣溫度可以嗎？","讓他保有決定權。若他情緒一直升高，志工 B 去找機構人員。"]
+    ]},
+    {key:"halluc",name:"幻覺",tech:["確效療法","非語言溝通"],scene:"吳奶奶緊抓志工的手臂，眼睛盯著空空的牆角。",lines:[
+      ["e","吳奶奶","牆角那裡站了一個小孩，一直看我。"],
+      ["x","避免這樣回","哪有，那裡什麼都沒有，你看錯了。","對她來說是真的看到了，被否定只會更害怕，也覺得沒人相信她。"],
+      ["x","也避免","真的耶，我也看到了。","假裝看到會讓幻覺變得更真實。"],
+      ["v","志工","您看到有人在那裡，覺得很不舒服。","不否定也不附和，回應她的感受。"],
+      ["e","吳奶奶","對，他一直看，好可怕。"],
+      ["v","志工","（輕拍她的手）我在這裡陪您。我們換個位置，坐窗戶這邊好嗎？","給安全感，再改變環境。"],
+      ["e","吳奶奶","（坐下）這邊比較亮。"],
+      ["v","志工","對啊，今天太陽很好。您以前喜歡曬太陽嗎？","轉到愉快的話題。離開前告訴護理人員，幻覺變多可能和身體或藥物有關。"]
+    ]},
+    {key:"withdraw",name:"退縮不說話",tech:["非語言溝通","提問技巧","生命故事與懷舊"],scene:"鄭爺爺最近三次訪視都低著頭，問什麼都不回答。",lines:[
+      ["v","志工","鄭爺爺好，我是志工阿明，今天來陪您坐坐。","每次都打招呼、自我介紹，即使他不回應。"],
+      ["e","鄭爺爺","（低著頭，沒反應）"],
+      ["x","避免這樣回","爺爺你怎麼都不講話？為什麼不理我？","追問「為什麼」需要推理和解釋，對退縮的長輩是壓力。"],
+      ["v","志工","（坐在旁邊，安靜一會兒）今天外面出太陽了，風有點涼。","不要求回答，說說身邊的事，讓氣氛放鬆。"],
+      ["e","鄭爺爺","（稍微抬頭看窗外）"],
+      ["v","志工","聽說您以前當過兵，是在海邊嗎？","用是非題起頭，比開放題容易接話；用他的生命故事找話題。"],
+      ["e","鄭爺爺","……金門。"],
+      ["v","志工","金門！那時候一定很辛苦。（輕輕哼一段軍歌）","接住他給的一個詞，用音樂延伸。不勉強他多說。"],
+      ["v","志工","（離開時）爺爺，我兩個禮拜後再來，再聽您說金門。","預告下次。訪視後告訴機構人員他最近很少說話，留意憂鬱或身體不適。"]
+    ]},
+    {key:"miss",name:"找過世的親人",tech:["確效療法","生命故事與懷舊"],scene:"傍晚，蔡爺爺的太太已過世多年，他一直望著門口。",lines:[
+      ["e","蔡爺爺","我太太怎麼還沒回來？她去市場那麼久。"],
+      ["x","避免這樣回","阿公，阿嬤已經過世了啦。","讓他重新經歷一次失去，悲傷會再來一遍。"],
+      ["v","志工","您在等太太回來。","重述他的話，不急著糾正。"],
+      ["e","蔡爺爺","她每天這個時間都會回來煮飯。"],
+      ["v","志工","您很想她。她煮的菜，您最喜歡哪一道？","說出感受，用事實性問句帶到懷舊。"],
+      ["e","蔡爺爺","她的麻油雞……冬天一定煮。"],
+      ["v","志工","冬天吃麻油雞最暖。她一定很會照顧這個家。","用他的關鍵字延伸，肯定他們的感情。"],
+      ["e","蔡爺爺","（眼眶泛紅）她很好……"],
+      ["v","志工","（輕握他的手）我陪您坐一下。","用溫和的觸碰，讓情緒有地方放。"]
+    ]},
+    {key:"stranger",name:"不認得志工",tech:["STE2P 溝通5撇步","FOCUSED 溝通原則"],scene:"張爺爺已經被訪視半年，今天志工一靠近，他把頭轉開。",lines:[
+      ["e","張爺爺","你是誰？我不認識你，走開！"],
+      ["x","避免這樣回","爺爺，我上個月有來啊，你忘記了喔？","像在考他記憶，他會覺得被指責。"],
+      ["v","志工","（停在他看得到的地方，蹲低，微笑）爺爺好，我是雙福的志工阿明。","面對面、視線同高、微笑，重新自我介紹，降低威脅感。"],
+      ["e","張爺爺","我不需要志工。"],
+      ["v","志工","好，今天不想聊天也沒關係。謝謝您跟我說。","尊重拒絕，也謝謝他的回應，讓他保有決定權。"],
+      ["v","志工","我先去看隔壁的阿伯，等一下走的時候再來跟您說再見。","預告會回來，讓拒絕不會變成僵局。"],
+      ["e","張爺爺","（點點頭）"],
+      ["v","志工","（離開前再來）爺爺，我要走了，這是我帶的老照片，下次可以一起看。","耐心，留下一個下次的話題。被拒絕不代表做錯了。"]
+    ]},
+    {key:"restless",name:"坐立不安喊叫",tech:["DICE 模式","提問技巧"],scene:"劉奶奶重度失智、說話不完整，今天一直扭動身體、反覆喊叫。",lines:[
+      ["e","劉奶奶","來人啊！來人啊！"],
+      ["x","避免這樣回","奶奶不要叫了，大家都在休息。","只想讓聲音停下來，卻沒找喊叫的原因。"],
+      ["v","志工 A","（蹲下，握住她的手）奶奶，我在這裡。","先讓她知道有人回應。"],
+      ["v","志工 B","（觀察）她一直摸肚子，褲子好像有點濕，坐墊也滑下來了。","D：描述。具體看到什麼，不下判斷。"],
+      ["v","志工 A","奶奶，肚子痛嗎？","I：找原因。用是非題問，她只要點頭或搖頭。"],
+      ["e","劉奶奶","（點頭）嗯……"],
+      ["v","志工 B","我去請照服員過來，跟她說奶奶在摸肚子、褲子可能濕了。","C：可以怎麼做。志工不自行處理如廁或身體照護，把看到的事實轉告機構人員。"],
+      ["v","志工 A","（陪著等）照服員馬上來，我陪您。","等待時繼續陪伴。"],
+      ["v","志工 B","（訪視後）下次來可以先問問她有沒有上廁所，看還會不會叫。","E：回頭看效果。把觀察寫進訪視紀錄，也告訴社工。"]
+    ]}
+  ];
+  var tabs=document.getElementById("dlgTabs"),scene=document.getElementById("dlgScene"),tech=document.getElementById("dlgTech"),box=document.getElementById("dlgLines"),
+      next=document.getElementById("dlgNext"),all=document.getElementById("dlgAll"),reset=document.getElementById("dlgReset"),count=document.getElementById("dlgCount");
+  var cur=0,shown=0;
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+  function lineHTML(l){
+    var cls=l[0]==="e"?"elder":l[0]==="v"?"vol":"vol avoid";
+    var h='<div class="line '+cls+'"><span class="who">'+esc(l[1])+'</span><span class="say">「'+esc(l[2])+'」</span>';
+    if(l[3])h+='<span class="why">'+(l[0]==="x"?"為什麼避免：":"為什麼這樣說：")+esc(l[3])+'</span>';
+    return h+'</div>';
+  }
+  function render(){
+    var d=DIALOGS[cur];scene.textContent=d.scene;
+    tech.innerHTML="用到的技巧："+d.tech.map(function(t){return"<span>"+esc(t)+"</span>"}).join("");
+    box.innerHTML=d.lines.slice(0,shown).map(lineHTML).join("");
+    count.textContent=shown+" / "+d.lines.length;
+    next.disabled=all.disabled=shown>=d.lines.length;
+    Array.prototype.forEach.call(tabs.children,function(b,i){b.setAttribute("aria-pressed",i===cur?"true":"false")});
+  }
+  DIALOGS.forEach(function(d,i){var b=document.createElement("button");b.type="button";b.textContent=d.name;
+    b.addEventListener("click",function(){cur=i;shown=1;render()});tabs.appendChild(b)});
+  next.addEventListener("click",function(){shown++;render()});
+  all.addEventListener("click",function(){shown=DIALOGS[cur].lines.length;render()});
+  reset.addEventListener("click",function(){shown=1;render()});
+  Array.prototype.forEach.call(document.querySelectorAll("[data-demo]"),function(b){
+    b.addEventListener("click",function(){
+      for(var i=0;i<DIALOGS.length;i++)if(DIALOGS[i].key===b.getAttribute("data-demo")){cur=i;shown=1;render();break}
+      document.getElementById("dialogue").scrollIntoView({behavior:"smooth",block:"start"});
+    });
+  });
+  shown=1;render();
+
+  // 課前暖身：二選一
+  var WARM=[
+    {q:"台灣的人口有多少？",o:["約 2,300 萬人","約 3,300 萬人"],a:0,f:"2026 年 6 月底，台灣總人口約 2,324 萬人，已經連續 30 個月減少。"},
+    {q:"台灣最長壽的長輩是幾歲？",o:["100 歲左右","超過 115 歲"],a:1,f:"依社家署資料，台灣最高齡的人瑞超過 115 歲；全台百歲人瑞約 5,500 人，人數創新高。"},
+    {q:"台灣的平均壽命是多少？",o:["約 81 歲","約 75 歲"],a:0,f:"內政部 114 年（2025）簡易生命表：平均壽命 81.27 歲，女性 84.75 歲、男性 77.93 歲。"},
+    {q:"65 歲以上長輩，失智症的盛行率大約是？",o:["約 2%","約 8%"],a:1,f:"衛福部全國失智症流行病學調查：65 歲以上失智盛行率 7.99%，大約每 12 位長輩就有 1 位。"},
+    {q:"下面哪一個是失智症常見的問題行為？",o:["一直覺得東西被偷","突然很會算數"],a:0,f:"「被偷妄想」很常見，另外還有重複詢問、想回家、遊走、躁動、幻覺、退縮等，統稱精神行為症狀（BPSD）。"},
+    {q:"失智症的人，有多少比例會合併問題行為？",o:["約一成","約九成"],a:1,f:"研究指出，約九成失智者在病程中會出現至少一種精神行為症狀，所以學會辨別與應對非常重要。"},
+    {q:"台灣 65 歲以上的人口，大約占全部人口的多少？",o:["約十分之一","約五分之一"],a:1,f:"2026 年 6 月底 65 歲以上占 20.49%，台灣已經是「超高齡社會」，每 5 人就有 1 位長輩。"},
+    {q:"最常見的失智症類型是？",o:["阿茲海默症","血管性失智症"],a:0,f:"阿茲海默症最常見，約占一半以上；其次是血管性失智症，還有路易氏體、額顳葉型等。"},
+    {q:"第一次見面，哪一種「定向感問候」比較好？",o:["「阿伯，你知道今天幾月幾號嗎？」","「阿伯好，我是雙福志工小美，今天星期六，來陪您聊天。」"],a:1,f:"定向感問候不是考試，而是主動把人、事、時、地、物介紹清楚，降低長輩的猜疑。"},
+    {q:"「你、我、他」溝通中，「我」這一句要說什麼？",o:["「要是我遇到這種事，我也會這樣。」","「我覺得你應該要想開一點。」"],a:0,f:"你：替他說出情緒；我：將心比心；他：我們一起想辦法，好嗎？"}
+  ];
+  var wbox=document.getElementById("warmBox"),wscore=document.getElementById("warmScore"),wans={};
+  function wUpd(){var r=0,k;for(k in wans)if(wans[k])r++;wscore.textContent=r+" / "+WARM.length}
+  function buildWarm(){
+    wans={};wbox.innerHTML="";
+    WARM.forEach(function(it,i){
+      var d=document.createElement("div");d.className="wq";
+      d.innerHTML='<span class="n">第 '+(i+1)+' 題</span><div class="prompt">'+it.q.replace(/[&<>]/g,"")+'</div><div class="two"></div><p class="fb" hidden></p>';
+      var two=d.querySelector(".two"),fb=d.querySelector(".fb");
+      it.o.forEach(function(t,j){
+        var b=document.createElement("button");b.type="button";b.textContent=t;
+        b.addEventListener("click",function(){
+          if(i in wans)return;wans[i]=(j===it.a);
+          two.children[it.a].classList.add("right");if(j!==it.a)b.classList.add("wrong");
+          fb.hidden=false;fb.textContent=(j===it.a?"答對了！":"答案是「"+it.o[it.a]+"」。")+it.f;wUpd();
+        });two.appendChild(b);
+      });
+      wbox.appendChild(d);
+    });wUpd();
+  }
+  document.getElementById("warmReset").addEventListener("click",buildWarm);
+  buildWarm();
+
+  // 快問快答：a=正確選項索引
+  var QUIZ=[
+    {q:"「我女兒什麼時候來接我？」（十分鐘內問了第五次）",o:["你剛剛問過了啦，等一下就來。","你很想女兒喔，她小時候是怎樣的孩子？","你女兒很忙，不會來。"],a:1,f:"每次都像第一次一樣回應，接住「想念」，再帶到回憶。不要承諾「等一下就來」，以免她一直等。"},
+    {q:"「我要回家，我媽媽在等我。」（長輩 90 歲）",o:["你媽媽早就過世了。","好，我帶你回家。","你想媽媽了。媽媽以前都煮什麼給你吃？"],a:2,f:"不糾正、也不做做不到的承諾。回應思念，再用懷舊轉移。"},
+    {q:"「你是誰？」（你已經訪視他三個月）",o:["阿伯好，我是雙福的志工小美，來陪你聊天。","你又忘記我了喔？","你猜猜看我是誰？"],a:0,f:"每次都主動自我介紹，不要考他。"},
+    {q:"想問長輩要不要喝東西，怎麼問比較好？",o:["你想喝什麼？","你想喝溫開水還是麥茶？","你口渴嗎？為什麼都不喝水？"],a:1,f:"二選一比開放題好回答。另外，給飲料前要先問機構人員，有些長輩需要增稠。"},
+    {q:"長輩一直推開你、大聲說「不要碰我」",o:["先退一步，放低音量：「好，我不碰你，我在這裡。」","握住他的手安撫他。","跟他解釋你是好意。"],a:0,f:"先拉開距離、停下動作，讓他感到安全。情緒持續升高就請機構人員協助。"},
+    {q:"中風失語的阿姨指著櫃子，表情很著急",o:["阿姨你要說什麼？你慢慢說清楚。","「是要這個杯子嗎？」「是照片嗎？」一個一個問。","沒關係，等護理師來再說。"],a:1,f:"用是非題縮小範圍，給她時間點頭或搖頭。她聽得懂，只是說不出來。"},
+    {q:"長輩說「我這樣活著只是拖累人」",o:["不要亂講，大家都很愛你。","你要加油，想開一點。","你一定很辛苦，可以多跟我說一點嗎？（之後告知護理人員與社工）"],a:2,f:"認真看待、陪他說完，不保密，當天回報。"},
+    {q:"想跟長輩說「我們來看照片」，哪一種說法比較好？",o:["乖乖喔，我們來看照片照片好不好？","王伯伯，我帶了一些老照片，想請您看看。","伯伯你坐好，不要亂動，我們要看照片了。"],a:1,f:"避開「老人語」：疊字、叫乖乖、哄小孩的語氣。用尊重的稱呼和一般大人的語氣說話。"}
+  ];
+  var qbox=document.getElementById("quizBox"),score=document.getElementById("quizScore"),answered={};
+  function updScore(){var r=0,k;for(k in answered)if(answered[k])r++;score.textContent=r+" / "+QUIZ.length}
+  function buildQuiz(){
+    answered={};qbox.innerHTML="";
+    QUIZ.forEach(function(it,i){
+      var d=document.createElement("div");d.className="q";
+      d.innerHTML='<div class="prompt">'+(i+1)+'. '+esc(it.q)+'</div><div class="opts"></div><div class="fb" hidden></div>';
+      var opts=d.querySelector(".opts"),fb=d.querySelector(".fb");
+      it.o.forEach(function(t,j){
+        var b=document.createElement("button");b.type="button";b.textContent=t;
+        b.addEventListener("click",function(){
+          if(i in answered)return;
+          answered[i]=(j===it.a);
+          opts.children[it.a].classList.add("right");
+          if(j!==it.a)b.classList.add("wrong");
+          fb.hidden=false;fb.innerHTML=(j===it.a?"<b>答對了。</b>":"<b>再想想。</b>")+esc(it.f);
+          updScore();
+        });
+        opts.appendChild(b);
+      });
+      qbox.appendChild(d);
+    });
+    updScore();
+  }
+  document.getElementById("quizReset").addEventListener("click",buildQuiz);
+  buildQuiz();
+})();
+</script>
+
+</body>
+</html>
