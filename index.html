@@ -390,6 +390,36 @@ body.present .rank li span:not(.no){font-size:18px}
 body.present .box h4{font-size:24px}
 body.present .box>p,body.present .box li{font-size:20px}
 
+/* Mobile topic switcher: 手機與平板的底部列＋目錄面板 */
+.mnav,.msheet{display:none}
+@media (max-width:1023px),(hover:none){
+  body:not(.present) .mnav{display:flex}
+  body:not(.present){padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+.mnav{position:fixed;left:0;right:0;bottom:0;z-index:30;gap:8px;align-items:center;
+  padding:8px max(12px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));
+  background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);backdrop-filter:blur(8px)}
+.mnav button{font:inherit;min-height:48px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.mnav .arrow{flex:none;width:52px;font-size:20px;font-weight:700;color:var(--teal)}
+.mnav .arrow:disabled{opacity:.35}
+.mnav .toc-btn{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:6px 14px;text-align:left;border-color:var(--teal)}
+.mnav .toc-btn .ic{flex:none;font-size:20px;color:var(--teal)}
+.mnav .toc-btn span:last-child{display:flex;flex-direction:column;min-width:0}
+.mnav .toc-btn small{font-size:12px;color:var(--teal);font-weight:700;letter-spacing:.06em}
+.mnav .toc-btn b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msheet.open{display:flex;position:fixed;inset:0;z-index:40;flex-direction:column;justify-content:flex-end;background:rgba(10,16,30,.45)}
+.msheet .panel{background:var(--bg);border-radius:20px 20px 0 0;max-height:82vh;max-height:82dvh;display:flex;flex-direction:column;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(16px,env(safe-area-inset-left,0px));animation:sheet .22s ease-out}
+.msheet .head{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;border-bottom:1px solid var(--line)}
+.msheet .head b{font-size:18px}
+.msheet .head button{font:inherit;min-width:48px;min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.msheet .list{overflow-y:auto;overscroll-behavior:contain;padding:6px 0 16px;display:flex;flex-direction:column}
+.msheet .grp{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--muted);padding:14px 4px 6px}
+.msheet .list button{font:inherit;display:flex;gap:10px;align-items:baseline;text-align:left;min-height:48px;padding:10px 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;line-height:1.45}
+.msheet .list button .no{flex:none;min-width:3.2em;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.msheet .list button[aria-current="true"]{background:var(--teal-soft);color:var(--teal);font-weight:700}
+@keyframes sheet{from{transform:translateY(30%);opacity:.4}to{transform:none;opacity:1}}
+
 @media print{
   nav.toc{display:none}
   body{font-size:13pt}
@@ -1378,6 +1408,18 @@ html{scroll-behavior:smooth}
 
 </div>
 
+<nav class="mnav" id="mnav" aria-label="切換主題">
+  <button class="arrow" id="mPrev" type="button" aria-label="上一個主題">‹</button>
+  <button class="toc-btn" id="mToc" type="button" aria-haspopup="dialog"><span class="ic" aria-hidden="true">☰</span><span><small id="mGrp">目錄</small><b id="mCur">開場</b></span></button>
+  <button class="arrow" id="mNext" type="button" aria-label="下一個主題">›</button>
+</nav>
+<div class="msheet" id="msheet" role="dialog" aria-modal="true" aria-label="主題目錄">
+  <div class="panel">
+    <div class="head"><b>選擇主題</b><button id="mClose" type="button" aria-label="關閉目錄">✕</button></div>
+    <div class="list" id="mList"></div>
+  </div>
+</div>
+
 <button class="deck-start" id="deckStart" type="button">▶ 開始簡報</button>
 <nav class="deck-nav" id="deckNav" aria-label="簡報控制">
   <button class="btn" id="deckPrev" type="button" aria-label="上一頁">◀ 上一頁</button>
@@ -1714,6 +1756,42 @@ html{scroll-behavior:smooth}
   // 目錄連結在簡報模式下改為跳頁
   [].forEach.call(document.querySelectorAll('a[href^="#"]'),function(a){a.addEventListener("click",function(e){
     var el=document.getElementById(a.getAttribute("href").slice(1));if(el&&window.__deckGoto(el))e.preventDefault()})});
+  // 手機主題切換
+  function fullTitle(el){var h=el.querySelector("h1,h2,h3,h4");if(!h)return{no:"",t:"第 "+(slides.indexOf(el)+1)+" 頁"};
+    var no=h.querySelector(".secno");var t=h.textContent;if(no)t=t.replace(no.textContent,"");
+    if(el.id==="speaker")t="講師介紹："+t.replace(/\s+/g," ");
+    return{no:no?no.textContent:"",t:t.replace(/\s+/g," ").trim()}}
+  var groups=[],gname="開場";
+  slides.forEach(function(el){
+    if(el.classList.contains("part")){gname=el.querySelector(".eyebrow").textContent.indexOf("上午")>=0?"上午｜與失智者的溝通":"下午｜失能長輩的照顧與陪伴";}
+    if(el.id==="pocket")gname="結尾";
+    groups.push(gname)});
+  var mList=document.getElementById("mList"),msheet=document.getElementById("msheet"),mCur=document.getElementById("mCur"),mGrp=document.getElementById("mGrp"),mi=0,lastG=null;
+  slides.forEach(function(el,i){
+    if(groups[i]!==lastG){var g=document.createElement("div");g.className="grp";g.textContent=groups[i];mList.appendChild(g);lastG=groups[i]}
+    var ft=fullTitle(el),b=document.createElement("button");b.type="button";
+    b.innerHTML='<span class="no">'+esc(ft.no||(el.classList.contains("part")?"▸":String(i+1)))+'</span><span>'+esc(ft.t)+'</span>';
+    b.addEventListener("click",function(){closeSheet();jumpTo(i)});mList.appendChild(b)});
+  var mBtns=mList.querySelectorAll("button");
+  function jumpTo(i){var el=slides[i];var y=el.getBoundingClientRect().top+window.pageYOffset-12;window.scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});setCur(i)}
+  function setCur(i){mi=i;var ft=fullTitle(slides[i]);mCur.textContent=(ft.no?ft.no+" ":"")+ft.t;mGrp.textContent=groups[i]+"・"+(i+1)+" / "+slides.length;
+    [].forEach.call(mBtns,function(b,k){b.setAttribute("aria-current",k===i?"true":"false")});
+    document.getElementById("mPrev").disabled=i===0;document.getElementById("mNext").disabled=i===slides.length-1}
+  var ticking=false;
+  window.addEventListener("scroll",function(){if(ticking||body.classList.contains("present"))return;ticking=true;requestAnimationFrame(function(){ticking=false;
+    var cur=0;for(var k=0;k<slides.length;k++){if(slides[k].getBoundingClientRect().top<=window.innerHeight*0.35)cur=k;else break}
+    var ft2=wrap.querySelector("footer"),lastEl=slides[slides.length-1];if((ft2&&ft2.getBoundingClientRect().top<window.innerHeight)||lastEl.getBoundingClientRect().top<window.innerHeight*0.8)cur=slides.length-1;
+    if(cur!==mi)setCur(cur)})},{passive:true});
+  function openSheet(){msheet.classList.add("open");var c=mBtns[mi];if(c){c.scrollIntoView({block:"center"});c.focus()}}
+  function closeSheet(){msheet.classList.remove("open");document.getElementById("mToc").focus({preventScroll:true})}
+  document.getElementById("mToc").addEventListener("click",openSheet);
+  document.getElementById("mClose").addEventListener("click",closeSheet);
+  msheet.addEventListener("click",function(e){if(e.target===msheet)closeSheet()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&msheet.classList.contains("open"))closeSheet()});
+  document.getElementById("mPrev").addEventListener("click",function(){if(mi>0)jumpTo(mi-1)});
+  document.getElementById("mNext").addEventListener("click",function(){if(mi<slides.length-1)jumpTo(mi+1)});
+  setCur(0);
+
   // 電腦大螢幕預設進入簡報模式（可切回講義模式，選擇會記住）
   var pref=null;try{pref=localStorage.getItem("deckMode")}catch(e){}
   var wide=window.matchMedia("(min-width:1024px) and (hover:hover)").matches;
