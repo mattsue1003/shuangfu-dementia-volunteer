@@ -63,7 +63,7 @@ a:focus-visible,summary:focus-visible{outline:3px solid var(--marigold);outline-
 header.top{display:flex;flex-direction:column;gap:20px;padding:32px 28px;border-radius:16px;background:var(--hero);color:var(--hero-ink)}
 header.top .eyebrow{color:var(--hero-sub)}
 .sub{font-family:var(--f-display);font-size:clamp(18px,2.8vw,22px);font-weight:500;color:var(--hero-sub)}
-.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px 24px;margin:0;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--hero-ink) 25%,transparent)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px 24px;margin:0;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--hero-ink) 25%,transparent)}
 .meta div{min-width:0}
 .meta dt{font-size:13px;letter-spacing:.1em;color:var(--hero-sub)}
 .meta dd{margin:0;font-weight:500}
@@ -229,7 +229,7 @@ a.act .go{margin-top:auto;font-size:14px;color:var(--teal);font-weight:700}
 .qrbox{display:flex;gap:14px;align-items:center;background:var(--hero-ink);color:var(--hero);border-radius:12px;padding:12px 16px 12px 12px}
 .qrbox svg.qr{width:120px;height:120px;display:block;flex:none}
 .qrbox b{display:block;font-size:16px}
-.qrbox span{font-size:13px;word-break:break-all;color:var(--hero)}
+.qrbox span{font-size:13px;line-height:1.45;word-break:break-all;color:var(--hero)}
 @media (max-width:520px){.qrbox{width:100%}}
 
 /* Warm-up two-choice */
@@ -277,6 +277,52 @@ a.act .go{margin-top:auto;font-size:14px;color:var(--teal);font-weight:700}
 @media (max-width:860px){.steps.steps4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.steps.steps4{grid-template-columns:1fr}}
 
+/* Presentation mode: 電腦上每個區塊一頁，←→ / PageUp / PageDown / 簡報筆換頁 */
+.deck-nav,.deck-start{display:none}
+body.present{overflow:hidden;font-size:21px;padding-left:0;padding-right:0}
+body.present .wrap{max-width:none;padding:0;gap:0;display:block}
+body.present .wrap>*{display:none!important}
+body.present .wrap>.slide-on{display:flex!important;flex-direction:column;gap:22px;height:100vh;height:100dvh;overflow-y:auto;overscroll-behavior:contain;
+  padding:clamp(28px,5vh,64px) max(48px,calc((100vw - 1180px)/2)) 110px;margin:0;border-radius:0;border:0}
+body.present .wrap>.slide-on.solo{justify-content:center}
+body.present h1{font-size:clamp(40px,4.6vw,64px)}
+body.present h2{font-size:clamp(32px,3.4vw,46px)}
+body.present h3{font-size:clamp(26px,2.6vw,34px)}
+body.present .part h2{font-size:clamp(44px,5vw,72px)}
+body.present .part p{font-size:26px}
+body.present table{font-size:18px}
+body.present .script{font-size:24px}
+body.present .quote{font-size:34px}
+body.present .wq,body.present .quiz .q,body.present .drill .card{display:none}
+body.present .quiz .q.step-on,body.present .drill .card.step-on{display:flex;padding:28px 32px;gap:14px}
+body.present .drill{grid-template-columns:1fr}
+body.present .drill .card h4{font-size:30px}
+body.present .card .who,body.present details ul{font-size:20px}
+body.present .card .tag{font-size:16px}
+body.present .q .prompt{font-size:28px}
+body.present .q .opts button{font-size:21px;padding:14px 18px}
+body.present header.top{justify-content:center}
+body.present .wq.step-on{display:flex;padding:36px 40px;gap:20px}
+body.present .warm{grid-template-columns:1fr}
+body.present .wq .prompt{font-size:clamp(30px,3.2vw,44px)}
+body.present .wq .two button{font-size:clamp(22px,2.2vw,30px);padding:26px 18px}
+body.present .wq .fb{font-size:22px}
+body.present .wq .n{font-size:18px}
+body.present .dlg .line .say{font-size:21px}
+.deck-nav{position:fixed;left:0;right:0;bottom:0;z-index:20;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:color-mix(in srgb,var(--bg) 92%,transparent);border-top:1px solid var(--line);backdrop-filter:blur(6px)}
+body.present .deck-nav{display:flex}
+.deck-nav .prog{flex:1;min-width:80px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.deck-nav .prog i{display:block;height:100%;background:var(--teal);width:0}
+.deck-nav .cnt{font-variant-numeric:tabular-nums;font-size:15px;color:var(--muted);min-width:64px;text-align:center}
+.deck-nav select{font:inherit;font-size:15px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);max-width:220px}
+.deck-nav .btn{font-size:15px}
+.deck-start{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:20;
+  font:inherit;font-weight:700;font-size:16px;padding:12px 22px;border-radius:999px;border:0;background:var(--teal);color:var(--hero-ink);cursor:pointer;box-shadow:0 6px 20px rgba(21,32,57,.25)}
+@media (min-width:1024px) and (hover:hover){body:not(.present) .deck-start{display:block}}
+.wrap>*{scroll-margin-top:16px}
+
 @media print{
   nav.toc{display:none}
   body{font-size:13pt}
@@ -311,6 +357,7 @@ html{scroll-behavior:smooth}
     <a href="#role">我們的角色</a>
     <a href="#schedule">課程時程</a>
     <a href="#am">上午・失智溝通</a>
+    <a href="#strength">優勢觀點</a>
     <a href="#orient">定向感問候</a>
     <a href="#ymh">你・我・他</a>
     <a href="#dialogue">示範對話</a>
@@ -409,8 +456,35 @@ html{scroll-behavior:smooth}
   <p class="tip"><b>換位想一想：</b>如果你一覺醒來，身邊都是不認識的人，有人告訴你「這是你家」，你卻記得家不是長這樣，你會不會害怕、想回家？許多被稱為「問題行為」的反應，其實是在表達這份害怕。</p>
 </section>
 
+<section class="sec" id="strength">
+  <h3><span class="secno">1-3</span>優勢觀點：關係先於溝通</h3>
+  <p class="quote">好的溝通，建立在良好的關係之上。</p>
+  <p>失智或失能讓長輩失去了很多能力，但他一輩子累積的經歷、個性的優點、拿手的本事都還在。看見長輩的過去，也看見他的優勢與長處，長輩會感覺被當成「一個有價值的人」，關係就在當下建立起來；關係好了，溝通自然順暢。</p>
+  <div class="ymh">
+    <div><span class="big">經歷<small>他走過的路</small></span><p>工作、家鄉、養兒育女、經歷過的大時代。</p><q>您以前在鐵路局做了三十年。</q></div>
+    <div><span class="big">優勢<small>他的長處</small></span><p>個性的優點、拿手的事、被人稱讚的地方。</p><q>您做事這麼仔細，難怪大家都信任您。</q></div>
+    <div><span class="big">現在<small>還能做的</small></span><p>今天還做得到、願意做的事，請他來教我們。</p><q>這首歌您唱得好準，可以教我嗎？</q></div>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th style="width:34%">只看到缺損</th><th>看到優勢</th></tr></thead>
+      <tbody>
+        <tr><td>她什麼都記不得了</td><td>她記得年輕時每一道拿手菜的做法</td></tr>
+        <tr><td>他脾氣很壞、很難搞</td><td>他很有原則，做事一向一絲不苟</td></tr>
+        <tr><td>她只會一直講以前的事</td><td>她的人生故事很豐富，很願意分享</td></tr>
+        <tr><td>他中風了什麼都不能做</td><td>他左手還很有力，很會鼓勵隔壁床的人</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid2">
+    <div class="box do"><h4>怎麼找到長輩的優勢</h4><ul class="clean"><li>訪視前問機構人員：他以前做什麼、喜歡什麼</li><li>觀察房間裡的照片、獎狀、收藏</li><li>從聊天中聽：他最驕傲的是什麼</li><li>記在訪視紀錄裡，下次接著聊</li></ul></div>
+    <div class="box do"><h4>怎麼說出口</h4><ul class="clean"><li>具體說出看到的長處，不說空泛的「好棒」</li><li>請他當老師：「您教我」</li><li>肯定他的付出：「您把孩子養大，真不簡單」</li><li>用尊重的稱呼：老師、師傅、頭家</li></ul></div>
+  </div>
+  <p class="muted"><button class="btn mini" type="button" data-demo="strength">看示範對話</button></p>
+</section>
+
 <section class="sec">
-  <h3><span class="secno">1-3</span>和失智長輩說話的七個原則</h3>
+  <h3><span class="secno">1-4</span>和失智長輩說話的七個原則</h3>
   <ul class="principles">
     <li><b>從正面靠近，視線同高</b><span>從背後或側邊出聲容易嚇到長輩；坐下或蹲下，讓他看得到你的臉。</span></li>
     <li><b>每次先自我介紹</b><span>「阿嬤好，我是雙福的志工小美，來陪你聊天。」不要問「你記得我是誰嗎？」</span></li>
@@ -423,7 +497,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec" id="orient">
-  <h3><span class="secno">1-4</span>第一次見面：定向感問候</h3>
+  <h3><span class="secno">1-5</span>第一次見面：定向感問候</h3>
   <p>失智長輩常搞不清楚眼前是誰、現在幾點、自己在哪裡，所以對陌生人容易猜疑。<b>定向感問候的重點不是考他，而是由我們主動把人、事、時、地、物介紹清楚</b>，讓他不用猜，自然就安心。</p>
   <div class="orient">
     <div><span class="k">人</span><p>我是誰、從哪裡來；怎麼稱呼您</p></div>
@@ -441,7 +515,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec">
-  <h3><span class="secno">1-5</span>換句話說</h3>
+  <h3><span class="secno">1-6</span>換句話說</h3>
   <div class="tbl">
     <table class="say">
       <thead><tr><th>容易讓長輩受挫的說法</th><th>可以試著這樣說</th></tr></thead>
@@ -459,7 +533,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec">
-  <h3><span class="secno">1-6</span>情緒與行為：先看懂，再回應</h3>
+  <h3><span class="secno">1-7</span>情緒與行為：先看懂，再回應</h3>
   <p>失智長輩出現焦慮、多疑、躁動、重複、想回家等情況，醫療上稱為「精神行為症狀（BPSD）」。對志工來說，最重要的一句話是：<b>行為是一種表達。</b>先找原因，常常就找到解方。</p>
   <div class="grid2">
     <div class="box"><h4>身體不舒服？</h4><p class="muted">疼痛、口渴、肚子餓、想上廁所、便秘、太熱或太冷、累了、看不清楚、聽不清楚</p></div>
@@ -486,7 +560,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec">
-  <h3><span class="secno">1-7</span>應對三步驟：停、接、轉</h3>
+  <h3><span class="secno">1-8</span>應對三步驟：停、接、轉</h3>
   <ol class="steps">
     <li><span class="k">停<small>STEP 1</small></span><p>先停下手邊的事與想說的道理。深呼吸，觀察他的表情、身體、周圍環境，想想可能的原因。</p></li>
     <li><span class="k">接<small>STEP 2</small></span><p>說出你看到的情緒：「你很著急喔」「你在擔心家裡」。讓他知道你懂，不急著解決。</p></li>
@@ -496,7 +570,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec" id="ymh">
-  <h3><span class="secno">1-8</span>同理三句話：你、我、他</h3>
+  <h3><span class="secno">1-9</span>同理三句話：你、我、他</h3>
   <p>長輩有情緒時，按「你、我、他」的順序說三句話：先替他說出感受，再表達將心比心，最後邀他一起想辦法。可以和「停、接、轉」一起用，它就是「接」到「轉」的說法。</p>
   <div class="ymh">
     <div><span class="big">你<small>覺察與代言</small></span><p>覺察到對方的情緒，替他說出來。</p><q>您等了一整個下午，覺得被冷落，很難過。</q></div>
@@ -518,8 +592,8 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec" id="dialogue">
-  <h3><span class="secno">1-9</span>示範對話：一句一句看</h3>
-  <p>開頭兩段示範「定向感問候」與「你、我、他」，第三段示範離開時的「4F」，後面十段是十種常見的情緒與行為。選一個情境，按「下一句」逐句看。每一句志工的回應都附上為什麼這樣說；紅色劃線的是容易脫口而出、但要避免的說法。</p>
+  <h3><span class="secno">1-10</span>示範對話：一句一句看</h3>
+  <p>開頭幾段示範「定向感問候」「優勢觀點」「你、我、他」與離開時的「4F」，後面十段是十種常見的情緒與行為。選一個情境，按「下一句」逐句看。每一句志工的回應都附上為什麼這樣說；紅色劃線的是容易脫口而出、但要避免的說法。</p>
   <div class="dlg">
     <div class="dlg-tabs" role="group" aria-label="選擇示範情境" id="dlgTabs"></div>
     <p class="dlg-scene" id="dlgScene"></p>
@@ -536,7 +610,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <section class="sec" id="quiz">
-  <h3><span class="secno">1-10</span>換你回應：八題快問快答</h3>
+  <h3><span class="secno">1-11</span>換你回應：八題快問快答</h3>
   <p>長輩說了這句話，你會怎麼回？點選一個答案，看看回饋。目前答對 <span class="score" id="quizScore">0 / 8</span></p>
   <div class="quiz" id="quizBox"></div>
   <button class="btn" id="quizReset" type="button" style="align-self:flex-start">重新作答</button>
@@ -559,7 +633,7 @@ html{scroll-behavior:smooth}
 <section class="sec" id="am-drill">
   <div class="eyebrow">上午分組演練 11:10–11:55・十個情境</div>
   <h2>失智情境角色扮演</h2>
-  <p>80 位學員分成 20 組，每組 4 人，對應實際服務的「兩人一組」。十個情境對應 1-5 的十種行為：<b>單數組演情境一、三、五、七、九，雙數組演情境二、四、六、八、十</b>，每組挑其中兩個演出。每個情境演 5 分鐘、討論 5 分鐘，然後輪換角色。演完可以按「看示範對話」對照。</p>
+  <p>80 位學員分成 20 組，每組 4 人，對應實際服務的「兩人一組」。十個情境對應「情緒與行為」那一節的十種行為：<b>單數組演情境一、三、五、七、九，雙數組演情境二、四、六、八、十</b>，每組挑其中兩個演出。每個情境演 5 分鐘、討論 5 分鐘，然後輪換角色。演完可以按「看示範對話」對照。</p>
   <div class="roles">
     <div><b>長輩</b>依情境演出，感受被回應時的心情</div>
     <div><b>志工 A</b>主要和長輩對話</div>
@@ -825,7 +899,20 @@ html{scroll-behavior:smooth}
     </ul>
     <a class="btn primary" href="https://mattsue1003.github.io/pop-song-guess/" target="_blank" rel="noopener" style="align-self:flex-start;text-decoration:none">開啟猜歌教案 →</a>
   </div>
+</section>
 
+<section class="sec" id="photo-games">
+  <h3>看照片懷舊猜猜看</h3>
+  <p>看照片、猜猜看，是和長輩打開話匣子最快的方法。猜不出來沒關係，重點是「那個年代您在做什麼？」</p>
+  <div class="acts">
+    <a class="act" href="https://mattsue1003.github.io/oldpicguess/" target="_blank" rel="noopener"><img src="activity-shots/oldpicguess.jpg" alt="看照片猜藝人畫面" loading="lazy"><span class="body"><b>看照片猜藝人</b><p>聚光燈下的資深藝人照片，按提示給名字第一個字，公布答案附三則趣聞。</p><span class="fit">適合：愛看電視、聽歌的長輩</span><span class="go">開啟教案 →</span></span></a>
+    <a class="act" href="https://mattsue1003.github.io/oldstar-geuss-game/" target="_blank" rel="noopener"><img src="activity-shots/oldstar-geuss-game.jpg" alt="老藝人懷舊猜猜看畫面" loading="lazy"><span class="body"><b>老藝人懷舊猜猜看</b><p>30 位老藝人，公布答案後有「一起聊聊」問題，可延伸成懷舊對話。</p><span class="fit">適合：一對一聊天、小團體</span><span class="go">開啟教案 →</span></span></a>
+    <a class="act" href="https://mattsue1003.github.io/political-photo/" target="_blank" rel="noopener"><img src="activity-shots/political-photo.jpg" alt="台灣政治人物懷舊猜謎畫面" loading="lazy"><span class="body"><b>猜猜他是誰？政治人物懷舊</b><p>1985 到 2010 年代的 20 位台灣政治人物，四段提示，最後一個是三選一。</p><span class="fit">適合：關心時事的長輩。聊年代與回憶，不討論政治立場</span><span class="go">開啟教案 →</span></span></a>
+    <a class="act" href="https://mattsue1003.github.io/mosaic-animation/" target="_blank" rel="noopener"><img src="activity-shots/mosaic-animation.jpg" alt="台灣著名景點馬賽克猜謎畫面" loading="lazy"><span class="body"><b>台灣景點馬賽克猜謎</b><p>20 個台灣著名景點被格子蓋住，格子慢慢翻開讓大家搶答；猜不到按提示出現四個選項。</p><span class="fit">適合：聊「您去過哪裡玩？」；也能上傳長輩家鄉照片</span><span class="go">開啟教案 →</span></span></a>
+  </div>
+</section>
+
+<section class="sec">
   <div class="act-group">
     <h4>聊天、音樂與動一動</h4>
     <div class="acts">
@@ -835,6 +922,9 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
+</section>
+
+<section class="sec">
   <div class="act-group">
     <h4>上色與畫畫</h4>
     <div class="acts">
@@ -847,6 +937,9 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
+</section>
+
+<section class="sec">
   <div class="act-group">
     <h4>手作</h4>
     <div class="acts">
@@ -1024,6 +1117,7 @@ html{scroll-behavior:smooth}
         <ul class="clean">
           <li>從正面靠近，坐下、視線同高</li>
           <li>定向感問候：人、事、時、地、物都介紹</li>
+          <li>找一個長處，具體說出來</li>
           <li>叫他習慣的稱呼</li>
         </ul>
       </div>
@@ -1096,6 +1190,18 @@ html{scroll-behavior:smooth}
 
 </div>
 
+<button class="deck-start" id="deckStart" type="button">▶ 開始簡報</button>
+<nav class="deck-nav" id="deckNav" aria-label="簡報控制">
+  <button class="btn" id="deckPrev" type="button" aria-label="上一頁">◀ 上一頁</button>
+  <button class="btn primary" id="deckNext" type="button" aria-label="下一頁">下一頁 ▶</button>
+  <span class="cnt" id="deckCnt"></span>
+  <span class="prog" aria-hidden="true"><i id="deckProg"></i></span>
+  <label for="deckJump" class="muted" style="font-size:14px">跳到</label>
+  <select id="deckJump"></select>
+  <button class="btn" id="deckFs" type="button">⛶ 全螢幕</button>
+  <button class="btn" id="deckExit" type="button">講義模式</button>
+</nav>
+
 <script>
 (function(){
   // 示範對話：e=長輩, v=志工, x=避免說（附 why）；key 對應 data-demo，tech 對應溝通技巧資料庫的方法
@@ -1110,6 +1216,18 @@ html{scroll-behavior:smooth}
       ["v","志工","我帶了一本老照片，有以前的市場和火車站，等一下想跟您一起看。","物：介紹手上的東西，也預告等一下要做的事。"],
       ["e","王奶奶","（身體放鬆）火車站喔，我以前常常去坐車。"],
       ["v","志工","真的嗎？您以前都坐車去哪裡？","她開始說話了，就跟著她的話題走。"]
+    ]},
+    {key:"strength",name:"優勢觀點",tech:["優勢觀點","生命故事與懷舊"],scene:"吳伯伯中風後右手無力，常說自己是廢人。房間牆上掛著一張「優良教師」獎狀。",lines:[
+      ["e","吳伯伯","你們不用來啦，我現在就是個廢人。"],
+      ["x","避免這樣回","不會啦，你還好好的，不要這樣想。","急著否定他的感受，也沒有看見他。"],
+      ["v","志工","伯伯，您覺得自己很多事做不了，心裡很難受。","先接住感受。"],
+      ["v","志工","我剛剛看到牆上的獎狀，您以前是老師？","從環境裡找到他的經歷。"],
+      ["e","吳伯伯","教了三十幾年國文。"],
+      ["v","志工","三十幾年！您一定教出很多學生。您那時候最拿手教什麼？","看見經歷，再問出他的長處。"],
+      ["e","吳伯伯","（坐直一點）作文啦，我的學生作文比賽常常得獎。"],
+      ["v","志工","難怪您說話這麼有條理。我寫字很醜，下次可以請您教我寫一句好詞嗎？","具體說出優點，並請他當老師，讓他用現在還做得到的方式發揮長處。"],
+      ["e","吳伯伯","（笑）好啊，你下次帶紙筆來。"],
+      ["v","志工","一言為定，吳老師。","用尊重的稱呼，關係就在這一刻建立起來。"]
     ]},
     {key:"ymh",name:"你・我・他",tech:["你我他同理三句","確效療法"],scene:"下午，林阿嬤一看到志工就抱怨，語氣很衝。",lines:[
       ["e","林阿嬤","你們這裡都沒人理我！我按鈴按半天都沒人來！"],
@@ -1269,7 +1387,7 @@ html{scroll-behavior:smooth}
   Array.prototype.forEach.call(document.querySelectorAll("[data-demo]"),function(b){
     b.addEventListener("click",function(){
       for(var i=0;i<DIALOGS.length;i++)if(DIALOGS[i].key===b.getAttribute("data-demo")){cur=i;shown=1;render();break}
-      document.getElementById("dialogue").scrollIntoView({behavior:"smooth",block:"start"});
+      var dg=document.getElementById("dialogue");if(!(window.__deckGoto&&window.__deckGoto(dg)))dg.scrollIntoView({behavior:"smooth",block:"start"});
     });
   });
   shown=1;render();
@@ -1346,6 +1464,58 @@ html{scroll-behavior:smooth}
   }
   document.getElementById("quizReset").addEventListener("click",buildQuiz);
   buildQuiz();
+
+  // 簡報模式
+  var wrap=document.querySelector(".wrap"),slides=[].slice.call(wrap.children).filter(function(el){return el.tagName!=="FOOTER"});
+  var si=0,st=0,body=document.body,cnt=document.getElementById("deckCnt"),prog=document.getElementById("deckProg"),jump=document.getElementById("deckJump");
+  function title(el){var h=el.querySelector("h1,h2,h3,h4");return h?h.textContent.replace(/\s+/g," ").trim().slice(0,24):"第 "+(slides.indexOf(el)+1)+" 頁"}
+  slides.forEach(function(el,i){var o=document.createElement("option");o.value=i;o.textContent=(i+1)+". "+title(el);jump.appendChild(o);
+    if(el.classList.contains("part")||el.tagName==="HEADER")el.classList.add("solo")});
+  function steps(el){return el.querySelectorAll(".wq,.quiz .q,.drill .card")}
+  function show(){
+    slides.forEach(function(el,i){el.classList.toggle("slide-on",i===si)});
+    var ss=steps(slides[si]);[].forEach.call(ss,function(q,j){q.classList.toggle("step-on",j===st)});
+    cnt.textContent=(si+1)+" / "+slides.length+(ss.length?"・"+(st+1)+" / "+ss.length:"");
+    prog.style.width=((si+1)/slides.length*100)+"%";jump.value=si;slides[si].scrollTop=0;
+    try{history.replaceState(null,"","#"+(slides[si].id||"p"+(si+1)))}catch(e){}
+  }
+  function go(d){
+    var n=steps(slides[si]).length;
+    if(n&&st+d>=0&&st+d<n){st+=d;show();return}
+    var ni=si+d;if(ni<0||ni>=slides.length)return;si=ni;
+    var m=steps(slides[si]).length;st=d<0&&m?m-1:0;show();
+  }
+  function slideOf(el){for(var i=0;i<slides.length;i++)if(slides[i]===el||slides[i].contains(el))return i;return -1}
+  function start(at){body.classList.add("present");si=at>=0?at:0;st=0;show();try{localStorage.setItem("deckMode","1")}catch(e){}}
+  function stop(){var cur=slides[si];body.classList.remove("present");slides.forEach(function(el){el.classList.remove("slide-on")});
+    try{localStorage.setItem("deckMode","0")}catch(e){} cur.scrollIntoView({block:"start"})}
+  window.__deckGoto=function(el){if(!body.classList.contains("present"))return false;var i=slideOf(el);if(i>=0){si=i;st=0;show();el.scrollIntoView({block:"start"})}return true};
+  document.getElementById("deckStart").addEventListener("click",function(){
+    var i=0;for(var k=0;k<slides.length;k++){if(slides[k].getBoundingClientRect().bottom>80){i=k;break}}start(i)});
+  document.getElementById("deckExit").addEventListener("click",stop);
+  document.getElementById("deckPrev").addEventListener("click",function(){go(-1)});
+  document.getElementById("deckNext").addEventListener("click",function(){go(1)});
+  jump.addEventListener("change",function(){si=+jump.value;st=0;show();jump.blur()});
+  document.getElementById("deckFs").addEventListener("click",function(){
+    var d=document;try{if(d.fullscreenElement)d.exitFullscreen();else d.documentElement.requestFullscreen().catch(function(){})}catch(e){}});
+  document.addEventListener("keydown",function(e){
+    if(!body.classList.contains("present"))return;
+    var t=e.target,typing=/INPUT|SELECT|TEXTAREA/.test(t.tagName);if(typing)return;
+    var k=e.key;
+    if(k==="ArrowRight"||k==="PageDown"||(k===" "&&t.tagName!=="BUTTON")){e.preventDefault();go(1)}
+    else if(k==="ArrowLeft"||k==="PageUp"){e.preventDefault();go(-1)}
+    else if(k==="Home"){si=0;st=0;show()}else if(k==="End"){si=slides.length-1;st=0;show()}
+    else if(k==="Escape"&&!document.fullscreenElement){stop()}
+  });
+  // 目錄連結在簡報模式下改為跳頁
+  [].forEach.call(document.querySelectorAll('a[href^="#"]'),function(a){a.addEventListener("click",function(e){
+    var el=document.getElementById(a.getAttribute("href").slice(1));if(el&&window.__deckGoto(el))e.preventDefault()})});
+  // 電腦大螢幕預設進入簡報模式（可切回講義模式，選擇會記住）
+  var pref=null;try{pref=localStorage.getItem("deckMode")}catch(e){}
+  var wide=window.matchMedia("(min-width:1024px) and (hover:hover)").matches;
+  if(wide&&pref!=="0"){var h=location.hash.slice(1),hi=-1;
+    if(h){var m=/^p(\d+)$/.exec(h);if(m)hi=+m[1]-1;else{var he=document.getElementById(h);if(he)hi=slideOf(he)}}
+    start(hi)}
 })();
 </script>
 
